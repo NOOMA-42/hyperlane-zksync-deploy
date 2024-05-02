@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/libs/MinimalProxy.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.6.11;\n\n// Library for building bytecode of minimal proxies (see https://eips.ethereum.org/EIPS/eip-1167)\nlibrary MinimalProxy {\n    bytes20 private constant PREFIX =\n        hex\"3d602d80600a3d3981f3363d3d373d3d3d363d73\";\n    bytes15 private constant SUFFIX = hex\"5af43d82803e903d91602b57fd5bf3\";\n\n    function create(address implementation) internal returns (address proxy) {\n        bytes memory _bytecode = bytecode(implementation);\n        assembly {\n            proxy := create(0, add(_bytecode, 32), mload(_bytecode))\n        }\n    }\n\n    function bytecode(\n        address implementation\n    ) internal pure returns (bytes memory) {\n        return abi.encodePacked(PREFIX, bytes20(implementation), SUFFIX);\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

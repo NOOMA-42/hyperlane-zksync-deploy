@@ -1,0 +1,39 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/mock/MockERC5164.sol": {
+      "content": "// SPDX-License-Identifier: MIT or Apache-2.0\npragma solidity ^0.8.13;\n\nimport {IMessageDispatcher} from \"../interfaces/hooks/IMessageDispatcher.sol\";\n\ncontract MockMessageDispatcher is IMessageDispatcher {\n    function dispatchMessage(\n        uint256 toChainId,\n        address to,\n        bytes calldata data\n    ) external returns (bytes32) {\n        bytes32 messageId = keccak256(abi.encodePacked(toChainId, to, data));\n\n        // simulate a successful dispatch\n        emit MessageDispatched(messageId, msg.sender, toChainId, to, data);\n\n        return messageId;\n    }\n}\n\ncontract MockMessageExecutor {\n    event MessageIdExecuted(\n        uint256 indexed fromChainId,\n        bytes32 indexed messageId\n    );\n}\n"
+    },
+    "contracts/interfaces/hooks/IMessageDispatcher.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.8.0;\n\n/**\n * @title ERC-5164: Cross-Chain Execution Standard\n * @dev See https://eips.ethereum.org/EIPS/eip-5164\n */\ninterface IMessageDispatcher {\n    /**\n     * @notice Emitted when a message has successfully been dispatched to the executor chain.\n     * @param messageId ID uniquely identifying the message\n     * @param from Address that dispatched the message\n     * @param toChainId ID of the chain receiving the message\n     * @param to Address that will receive the message\n     * @param data Data that was dispatched\n     */\n    event MessageDispatched(\n        bytes32 indexed messageId,\n        address indexed from,\n        uint256 indexed toChainId,\n        address to,\n        bytes data\n    );\n\n    function dispatchMessage(\n        uint256 toChainId,\n        address to,\n        bytes calldata data\n    ) external returns (bytes32);\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

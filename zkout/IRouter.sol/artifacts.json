@@ -1,0 +1,474 @@
+{
+  "contracts": {
+    "contracts/interfaces/IRouter.sol": {
+      "IRouter": {
+        "abi": [
+          {
+            "inputs": [],
+            "name": "domains",
+            "outputs": [
+              {
+                "internalType": "uint32[]",
+                "name": "",
+                "type": "uint32[]"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint32",
+                "name": "_domain",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "_router",
+                "type": "bytes32"
+              }
+            ],
+            "name": "enrollRemoteRouter",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint32[]",
+                "name": "_domains",
+                "type": "uint32[]"
+              },
+              {
+                "internalType": "bytes32[]",
+                "name": "_routers",
+                "type": "bytes32[]"
+              }
+            ],
+            "name": "enrollRemoteRouters",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint32",
+                "name": "_domain",
+                "type": "uint32"
+              }
+            ],
+            "name": "routers",
+            "outputs": [
+              {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          }
+        ],
+        "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"domains\",\"outputs\":[{\"internalType\":\"uint32[]\",\"name\":\"\",\"type\":\"uint32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_domain\",\"type\":\"uint32\"},{\"internalType\":\"bytes32\",\"name\":\"_router\",\"type\":\"bytes32\"}],\"name\":\"enrollRemoteRouter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32[]\",\"name\":\"_domains\",\"type\":\"uint32[]\"},{\"internalType\":\"bytes32[]\",\"name\":\"_routers\",\"type\":\"bytes32[]\"}],\"name\":\"enrollRemoteRouters\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_domain\",\"type\":\"uint32\"}],\"name\":\"routers\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IRouter.sol\":\"IRouter\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":false,\"cse\":false,\"deduplicate\":false,\"inliner\":false,\"jumpdestRemover\":false,\"orderLiterals\":false,\"peephole\":false,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf[xa[r]EscLMcCTUtTOntnfDIulLculVcul [j]Tpeulxa[rul]xa[r]cLgvifCTUca[r]LSsTFOtfDnca[r]Iulc]jmul[jul] VcTOcul jmul:fDnTOc\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/IRouter.sol\":{\"keccak256\":\"0x581c0cd07a2e4a3feb8fa17c867edf7275842152b1ec9f3c1af030c2957a3d7a\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://04e1a5ade88544bd990df968cf637caa3df7cc67cdbca9491df9dc3bbccea1be\",\"dweb:/ipfs/QmToeGk25SGvtV5wfdi3cHF5QHgTiGtEuzCf5fnZTYNhTM\"]}},\"version\":1}",
+        "evm": {
+          "legacyAssembly": null,
+          "assembly": null,
+          "bytecode": null,
+          "methodIdentifiers": {
+            "domains()": "440df4f4",
+            "enrollRemoteRouter(uint32,bytes32)": "b49c53a7",
+            "enrollRemoteRouters(uint32[],bytes32[])": "e9198bf9",
+            "routers(uint32)": "2ead72f6"
+          }
+        },
+        "irOptimized": ""
+      }
+    }
+  },
+  "sources": {
+    "contracts/interfaces/IRouter.sol": {
+      "id": 0,
+      "ast": {
+        "absolutePath": "contracts/interfaces/IRouter.sol",
+        "exportedSymbols": {
+          "IRouter": [
+            31
+          ]
+        },
+        "id": 32,
+        "license": "MIT OR Apache-2.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+          {
+            "id": 1,
+            "literals": [
+              "solidity",
+              ">=",
+              "0.8",
+              ".0"
+            ],
+            "nodeType": "PragmaDirective",
+            "src": "46:24:0"
+          },
+          {
+            "abstract": false,
+            "baseContracts": [],
+            "canonicalName": "IRouter",
+            "contractDependencies": [],
+            "contractKind": "interface",
+            "fullyImplemented": false,
+            "id": 31,
+            "linearizedBaseContracts": [
+              31
+            ],
+            "name": "IRouter",
+            "nameLocation": "82:7:0",
+            "nodeType": "ContractDefinition",
+            "nodes": [
+              {
+                "functionSelector": "440df4f4",
+                "id": 7,
+                "implemented": false,
+                "kind": "function",
+                "modifiers": [],
+                "name": "domains",
+                "nameLocation": "105:7:0",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 2,
+                  "nodeType": "ParameterList",
+                  "parameters": [],
+                  "src": "112:2:0"
+                },
+                "returnParameters": {
+                  "id": 6,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 5,
+                      "mutability": "mutable",
+                      "name": "",
+                      "nameLocation": "-1:-1:-1",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 7,
+                      "src": "138:15:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_uint32_$dyn_memory_ptr",
+                        "typeString": "uint32[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 3,
+                          "name": "uint32",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "138:6:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "id": 4,
+                        "nodeType": "ArrayTypeName",
+                        "src": "138:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                          "typeString": "uint32[]"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "137:17:0"
+                },
+                "scope": 31,
+                "src": "96:59:0",
+                "stateMutability": "view",
+                "virtual": false,
+                "visibility": "external"
+              },
+              {
+                "functionSelector": "2ead72f6",
+                "id": 14,
+                "implemented": false,
+                "kind": "function",
+                "modifiers": [],
+                "name": "routers",
+                "nameLocation": "170:7:0",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 10,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 9,
+                      "mutability": "mutable",
+                      "name": "_domain",
+                      "nameLocation": "185:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 14,
+                      "src": "178:14:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      },
+                      "typeName": {
+                        "id": 8,
+                        "name": "uint32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "178:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "177:16:0"
+                },
+                "returnParameters": {
+                  "id": 13,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 12,
+                      "mutability": "mutable",
+                      "name": "",
+                      "nameLocation": "-1:-1:-1",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 14,
+                      "src": "217:7:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 11,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "217:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "216:9:0"
+                },
+                "scope": 31,
+                "src": "161:65:0",
+                "stateMutability": "view",
+                "virtual": false,
+                "visibility": "external"
+              },
+              {
+                "functionSelector": "b49c53a7",
+                "id": 21,
+                "implemented": false,
+                "kind": "function",
+                "modifiers": [],
+                "name": "enrollRemoteRouter",
+                "nameLocation": "241:18:0",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 19,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 16,
+                      "mutability": "mutable",
+                      "name": "_domain",
+                      "nameLocation": "267:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 21,
+                      "src": "260:14:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      },
+                      "typeName": {
+                        "id": 15,
+                        "name": "uint32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "260:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 18,
+                      "mutability": "mutable",
+                      "name": "_router",
+                      "nameLocation": "284:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 21,
+                      "src": "276:15:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 17,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "276:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "259:33:0"
+                },
+                "returnParameters": {
+                  "id": 20,
+                  "nodeType": "ParameterList",
+                  "parameters": [],
+                  "src": "301:0:0"
+                },
+                "scope": 31,
+                "src": "232:70:0",
+                "stateMutability": "nonpayable",
+                "virtual": false,
+                "visibility": "external"
+              },
+              {
+                "functionSelector": "e9198bf9",
+                "id": 30,
+                "implemented": false,
+                "kind": "function",
+                "modifiers": [],
+                "name": "enrollRemoteRouters",
+                "nameLocation": "317:19:0",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 28,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 24,
+                      "mutability": "mutable",
+                      "name": "_domains",
+                      "nameLocation": "364:8:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 30,
+                      "src": "346:26:0",
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_uint32_$dyn_calldata_ptr",
+                        "typeString": "uint32[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 22,
+                          "name": "uint32",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "346:6:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "id": 23,
+                        "nodeType": "ArrayTypeName",
+                        "src": "346:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                          "typeString": "uint32[]"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 27,
+                      "mutability": "mutable",
+                      "name": "_routers",
+                      "nameLocation": "401:8:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 30,
+                      "src": "382:27:0",
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_bytes32_$dyn_calldata_ptr",
+                        "typeString": "bytes32[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 25,
+                          "name": "bytes32",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "382:7:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "id": 26,
+                        "nodeType": "ArrayTypeName",
+                        "src": "382:9:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                          "typeString": "bytes32[]"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "336:79:0"
+                },
+                "returnParameters": {
+                  "id": 29,
+                  "nodeType": "ParameterList",
+                  "parameters": [],
+                  "src": "424:0:0"
+                },
+                "scope": 31,
+                "src": "308:117:0",
+                "stateMutability": "nonpayable",
+                "virtual": false,
+                "visibility": "external"
+              }
+            ],
+            "scope": 32,
+            "src": "72:355:0",
+            "usedErrors": []
+          }
+        ],
+        "src": "46:382:0"
+      }
+    }
+  },
+  "errors": [],
+  "version": "0.8.19",
+  "long_version": "0.8.19+commit.7dd6d404.Darwin.appleclang",
+  "zk_version": "1.4.1"
+}

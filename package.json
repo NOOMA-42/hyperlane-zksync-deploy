@@ -1,0 +1,11 @@
+{
+  "name": "hyperlane-zksync-deploy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "NOOMA-42 <tzuchun42@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3",
+    "@openzeppelin/contracts-upgradeable": "^v4.9.3"
+  }
+}

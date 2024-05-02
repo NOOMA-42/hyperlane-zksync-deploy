@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/middleware/liquidity-layer/interfaces/portal/IPortalTokenBridge.sol": {
+      "content": "// SPDX-License-Identifier: Apache-2.0\npragma solidity ^0.8.13;\n\n// Portal's interface from their docs\ninterface IPortalTokenBridge {\n    struct Transfer {\n        uint8 payloadID;\n        uint256 amount;\n        bytes32 tokenAddress;\n        uint16 tokenChain;\n        bytes32 to;\n        uint16 toChain;\n        uint256 fee;\n    }\n\n    struct TransferWithPayload {\n        uint8 payloadID;\n        uint256 amount;\n        bytes32 tokenAddress;\n        uint16 tokenChain;\n        bytes32 to;\n        uint16 toChain;\n        bytes32 fromAddress;\n        bytes payload;\n    }\n\n    struct AssetMeta {\n        uint8 payloadID;\n        bytes32 tokenAddress;\n        uint16 tokenChain;\n        uint8 decimals;\n        bytes32 symbol;\n        bytes32 name;\n    }\n\n    struct RegisterChain {\n        bytes32 module;\n        uint8 action;\n        uint16 chainId;\n        uint16 emitterChainID;\n        bytes32 emitterAddress;\n    }\n\n    struct UpgradeContract {\n        bytes32 module;\n        uint8 action;\n        uint16 chainId;\n        bytes32 newContract;\n    }\n\n    struct RecoverChainId {\n        bytes32 module;\n        uint8 action;\n        uint256 evmChainId;\n        uint16 newChainId;\n    }\n\n    event ContractUpgraded(\n        address indexed oldContract,\n        address indexed newContract\n    );\n\n    function transferTokensWithPayload(\n        address token,\n        uint256 amount,\n        uint16 recipientChain,\n        bytes32 recipient,\n        uint32 nonce,\n        bytes memory payload\n    ) external payable returns (uint64 sequence);\n\n    function completeTransferWithPayload(\n        bytes memory encodedVm\n    ) external returns (bytes memory);\n\n    function parseTransferWithPayload(\n        bytes memory encoded\n    ) external pure returns (TransferWithPayload memory transfer);\n\n    function wrappedAsset(\n        uint16 tokenChainId,\n        bytes32 tokenAddress\n    ) external view returns (address);\n\n    function isWrappedAsset(address token) external view returns (bool);\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

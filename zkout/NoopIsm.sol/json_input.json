@@ -1,0 +1,39 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/isms/NoopIsm.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.8.0;\n\nimport {IInterchainSecurityModule} from \"../interfaces/IInterchainSecurityModule.sol\";\n\ncontract NoopIsm is IInterchainSecurityModule {\n    uint8 public constant override moduleType = uint8(Types.NULL);\n\n    function verify(\n        bytes calldata,\n        bytes calldata\n    ) public pure override returns (bool) {\n        return true;\n    }\n}\n"
+    },
+    "contracts/interfaces/IInterchainSecurityModule.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.6.11;\n\ninterface IInterchainSecurityModule {\n    enum Types {\n        UNUSED,\n        ROUTING,\n        AGGREGATION,\n        LEGACY_MULTISIG,\n        MERKLE_ROOT_MULTISIG,\n        MESSAGE_ID_MULTISIG,\n        NULL, // used with relayer carrying no metadata\n        CCIP_READ\n    }\n\n    /**\n     * @notice Returns an enum that represents the type of security model\n     * encoded by this ISM.\n     * @dev Relayers infer how to fetch and format metadata.\n     */\n    function moduleType() external view returns (uint8);\n\n    /**\n     * @notice Defines a security model responsible for verifying interchain\n     * messages based on the provided metadata.\n     * @param _metadata Off-chain metadata provided by a relayer, specific to\n     * the security model encoded by the module (e.g. validator signatures)\n     * @param _message Hyperlane encoded interchain message\n     * @return True if the message was verified\n     */\n    function verify(\n        bytes calldata _metadata,\n        bytes calldata _message\n    ) external returns (bool);\n}\n\ninterface ISpecifiesInterchainSecurityModule {\n    function interchainSecurityModule()\n        external\n        view\n        returns (IInterchainSecurityModule);\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

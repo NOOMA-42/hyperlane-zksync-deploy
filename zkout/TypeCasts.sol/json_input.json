@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/libs/TypeCasts.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.6.11;\n\nlibrary TypeCasts {\n    // alignment preserving cast\n    function addressToBytes32(address _addr) internal pure returns (bytes32) {\n        return bytes32(uint256(uint160(_addr)));\n    }\n\n    // alignment preserving cast\n    function bytes32ToAddress(bytes32 _buf) internal pure returns (address) {\n        return address(uint160(uint256(_buf)));\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

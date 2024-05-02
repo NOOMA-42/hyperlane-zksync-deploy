@@ -1,0 +1,39 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/test/TestLiquidityLayerMessageRecipient.sol": {
+      "content": "// SPDX-License-Identifier: Apache-2.0\npragma solidity ^0.8.13;\n\nimport {ILiquidityLayerMessageRecipient} from \"../interfaces/ILiquidityLayerMessageRecipient.sol\";\n\ncontract TestLiquidityLayerMessageRecipient is ILiquidityLayerMessageRecipient {\n    event HandledWithTokens(\n        uint32 origin,\n        bytes32 sender,\n        bytes message,\n        address token,\n        uint256 amount\n    );\n\n    function handleWithTokens(\n        uint32 _origin,\n        bytes32 _sender,\n        bytes calldata _message,\n        address _token,\n        uint256 _amount\n    ) external {\n        emit HandledWithTokens(_origin, _sender, _message, _token, _amount);\n    }\n}\n"
+    },
+    "contracts/interfaces/ILiquidityLayerMessageRecipient.sol": {
+      "content": "// SPDX-License-Identifier: Apache-2.0\npragma solidity ^0.8.13;\n\ninterface ILiquidityLayerMessageRecipient {\n    function handleWithTokens(\n        uint32 _origin,\n        bytes32 _sender,\n        bytes calldata _message,\n        address _token,\n        uint256 _amount\n    ) external;\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/libs/MetaProxy.sol": {
+      "content": "// SPDX-License-Identifier: CC0-1.0\npragma solidity >=0.7.6;\n\n/// @dev Adapted from https://eips.ethereum.org/EIPS/eip-3448\nlibrary MetaProxy {\n    bytes32 private constant PREFIX =\n        hex\"600b380380600b3d393df3363d3d373d3d3d3d60368038038091363936013d73\";\n    bytes13 private constant SUFFIX = hex\"5af43d3d93803e603457fd5bf3\";\n\n    function bytecode(\n        address _implementation,\n        bytes memory _metadata\n    ) internal pure returns (bytes memory) {\n        return\n            abi.encodePacked(\n                PREFIX,\n                bytes20(_implementation),\n                SUFFIX,\n                _metadata,\n                _metadata.length\n            );\n    }\n\n    function metadata() internal pure returns (bytes memory) {\n        bytes memory data;\n        assembly {\n            let posOfMetadataSize := sub(calldatasize(), 32)\n            let size := calldataload(posOfMetadataSize)\n            let dataPtr := sub(posOfMetadataSize, size)\n            data := mload(64)\n            // increment free memory pointer by metadata size + 32 bytes (length)\n            mstore(64, add(data, add(size, 32)))\n            mstore(data, size)\n            let memPtr := add(data, 32)\n            calldatacopy(memPtr, dataPtr, size)\n        }\n        return data;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "contracts": {
+    "contracts/interfaces/IMessageRecipient.sol": {
+      "IMessageRecipient": {
+        "abi": [
+          {
+            "inputs": [
+              {
+                "internalType": "uint32",
+                "name": "_origin",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "_sender",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes",
+                "name": "_message",
+                "type": "bytes"
+              }
+            ],
+            "name": "handle",
+            "outputs": [],
+            "stateMutability": "payable",
+            "type": "function"
+          }
+        ],
+        "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_origin\",\"type\":\"uint32\"},{\"internalType\":\"bytes32\",\"name\":\"_sender\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"_message\",\"type\":\"bytes\"}],\"name\":\"handle\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IMessageRecipient.sol\":\"IMessageRecipient\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":false,\"cse\":false,\"deduplicate\":false,\"inliner\":false,\"jumpdestRemover\":false,\"orderLiterals\":false,\"peephole\":false,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf[xa[r]EscLMcCTUtTOntnfDIulLculVcul [j]Tpeulxa[rul]xa[r]cLgvifCTUca[r]LSsTFOtfDnca[r]Iulc]jmul[jul] VcTOcul jmul:fDnTOc\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/IMessageRecipient.sol\":{\"keccak256\":\"0x145e8332a91295a710deb3cb1ab689144262ef6ec66d9570c600b778e9dd964d\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://a22ad97b1d8d3a37e8b4ad1519b893ac7cdf718c3a340999ffef4fb04060f119\",\"dweb:/ipfs/QmXp3w8yPm1vHyNrrSLr4YtRMP44eLadHnXSAjSecqB7H6\"]}},\"version\":1}",
+        "evm": {
+          "legacyAssembly": null,
+          "assembly": null,
+          "bytecode": null,
+          "methodIdentifiers": {
+            "handle(uint32,bytes32,bytes)": "56d5d475"
+          }
+        },
+        "irOptimized": ""
+      }
+    }
+  },
+  "sources": {
+    "contracts/interfaces/IMessageRecipient.sol": {
+      "id": 0,
+      "ast": {
+        "absolutePath": "contracts/interfaces/IMessageRecipient.sol",
+        "exportedSymbols": {
+          "IMessageRecipient": [
+            11
+          ]
+        },
+        "id": 12,
+        "license": "MIT OR Apache-2.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+          {
+            "id": 1,
+            "literals": [
+              "solidity",
+              ">=",
+              "0.6",
+              ".11"
+            ],
+            "nodeType": "PragmaDirective",
+            "src": "46:25:0"
+          },
+          {
+            "abstract": false,
+            "baseContracts": [],
+            "canonicalName": "IMessageRecipient",
+            "contractDependencies": [],
+            "contractKind": "interface",
+            "fullyImplemented": false,
+            "id": 11,
+            "linearizedBaseContracts": [
+              11
+            ],
+            "name": "IMessageRecipient",
+            "nameLocation": "83:17:0",
+            "nodeType": "ContractDefinition",
+            "nodes": [
+              {
+                "functionSelector": "56d5d475",
+                "id": 10,
+                "implemented": false,
+                "kind": "function",
+                "modifiers": [],
+                "name": "handle",
+                "nameLocation": "116:6:0",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 8,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 3,
+                      "mutability": "mutable",
+                      "name": "_origin",
+                      "nameLocation": "139:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 10,
+                      "src": "132:14:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      },
+                      "typeName": {
+                        "id": 2,
+                        "name": "uint32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "132:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 5,
+                      "mutability": "mutable",
+                      "name": "_sender",
+                      "nameLocation": "164:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 10,
+                      "src": "156:15:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 4,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "156:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 7,
+                      "mutability": "mutable",
+                      "name": "_message",
+                      "nameLocation": "196:8:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 10,
+                      "src": "181:23:0",
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_calldata_ptr",
+                        "typeString": "bytes"
+                      },
+                      "typeName": {
+                        "id": 6,
+                        "name": "bytes",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "181:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_storage_ptr",
+                          "typeString": "bytes"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "122:88:0"
+                },
+                "returnParameters": {
+                  "id": 9,
+                  "nodeType": "ParameterList",
+                  "parameters": [],
+                  "src": "227:0:0"
+                },
+                "scope": 11,
+                "src": "107:121:0",
+                "stateMutability": "payable",
+                "virtual": false,
+                "visibility": "external"
+              }
+            ],
+            "scope": 12,
+            "src": "73:157:0",
+            "usedErrors": []
+          }
+        ],
+        "src": "46:185:0"
+      }
+    }
+  },
+  "errors": [],
+  "version": "0.8.19",
+  "long_version": "0.8.19+commit.7dd6d404.Darwin.appleclang",
+  "zk_version": "1.4.1"
+}

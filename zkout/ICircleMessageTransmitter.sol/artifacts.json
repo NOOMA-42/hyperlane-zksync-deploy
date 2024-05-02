@@ -1,0 +1,317 @@
+{
+  "contracts": {
+    "contracts/middleware/liquidity-layer/interfaces/circle/ICircleMessageTransmitter.sol": {
+      "ICircleMessageTransmitter": {
+        "abi": [
+          {
+            "inputs": [
+              {
+                "internalType": "bytes",
+                "name": "_message",
+                "type": "bytes"
+              },
+              {
+                "internalType": "bytes",
+                "name": "_attestation",
+                "type": "bytes"
+              }
+            ],
+            "name": "receiveMessage",
+            "outputs": [
+              {
+                "internalType": "bool",
+                "name": "success",
+                "type": "bool"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "bytes32",
+                "name": "_nonceId",
+                "type": "bytes32"
+              }
+            ],
+            "name": "usedNonces",
+            "outputs": [
+              {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          }
+        ],
+        "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"_message\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"_attestation\",\"type\":\"bytes\"}],\"name\":\"receiveMessage\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_nonceId\",\"type\":\"bytes32\"}],\"name\":\"usedNonces\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"receiveMessage(bytes,bytes)\":{\"details\":\"Attestation format: A valid attestation is the concatenated 65-byte signature(s) of exactly `thresholdSignature` signatures, in increasing order of attester address. ***If the attester addresses recovered from signatures are not in increasing order, signature verification will fail.*** If incorrect number of signatures or duplicate signatures are supplied, signature verification will fail. Message format: Field Bytes Type Index version 4 uint32 0 sourceDomain 4 uint32 4 destinationDomain 4 uint32 8 nonce 8 uint64 12 sender 32 bytes32 20 recipient 32 bytes32 52 messageBody dynamic bytes 84\",\"params\":{\"_attestation\":\"Concatenated 65-byte signature(s) of `_message`, in increasing order of the attester address recovered from signatures.\",\"_message\":\"Message bytes\"},\"returns\":{\"success\":\"bool, true if successful\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"receiveMessage(bytes,bytes)\":{\"notice\":\"Receive a message. Messages with a given nonce can only be broadcast once for a (sourceDomain, destinationDomain) pair. The message body of a valid message is passed to the specified recipient for further processing.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/middleware/liquidity-layer/interfaces/circle/ICircleMessageTransmitter.sol\":\"ICircleMessageTransmitter\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":false,\"cse\":false,\"deduplicate\":false,\"inliner\":false,\"jumpdestRemover\":false,\"orderLiterals\":false,\"peephole\":false,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf[xa[r]EscLMcCTUtTOntnfDIulLculVcul [j]Tpeulxa[rul]xa[r]cLgvifCTUca[r]LSsTFOtfDnca[r]Iulc]jmul[jul] VcTOcul jmul:fDnTOc\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"contracts/middleware/liquidity-layer/interfaces/circle/ICircleMessageTransmitter.sol\":{\"keccak256\":\"0xa9061f680044d499b39af258b3666270fd9729aa4624ffdc448f98565f04a091\",\"license\":\"Apache-2.0\",\"urls\":[\"bzz-raw://4faa8db115154d048e3870a2797b318dd404983c4a956cc88d542d7bf2e7d36a\",\"dweb:/ipfs/QmPkVhm9HL5RFXSEN2pBo4gM4nGoxYUB5EK11pTYovq8S9\"]}},\"version\":1}",
+        "evm": {
+          "legacyAssembly": null,
+          "assembly": null,
+          "bytecode": null,
+          "methodIdentifiers": {
+            "receiveMessage(bytes,bytes)": "57ecfd28",
+            "usedNonces(bytes32)": "feb61724"
+          }
+        },
+        "irOptimized": ""
+      }
+    }
+  },
+  "sources": {
+    "contracts/middleware/liquidity-layer/interfaces/circle/ICircleMessageTransmitter.sol": {
+      "id": 0,
+      "ast": {
+        "absolutePath": "contracts/middleware/liquidity-layer/interfaces/circle/ICircleMessageTransmitter.sol",
+        "exportedSymbols": {
+          "ICircleMessageTransmitter": [
+            19
+          ]
+        },
+        "id": 20,
+        "license": "Apache-2.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+          {
+            "id": 1,
+            "literals": [
+              "solidity",
+              "^",
+              "0.8",
+              ".13"
+            ],
+            "nodeType": "PragmaDirective",
+            "src": "39:24:0"
+          },
+          {
+            "abstract": false,
+            "baseContracts": [],
+            "canonicalName": "ICircleMessageTransmitter",
+            "contractDependencies": [],
+            "contractKind": "interface",
+            "fullyImplemented": false,
+            "id": 19,
+            "linearizedBaseContracts": [
+              19
+            ],
+            "name": "ICircleMessageTransmitter",
+            "nameLocation": "75:25:0",
+            "nodeType": "ContractDefinition",
+            "nodes": [
+              {
+                "documentation": {
+                  "id": 2,
+                  "nodeType": "StructuredDocumentation",
+                  "src": "107:1230:0",
+                  "text": " @notice Receive a message. Messages with a given nonce\n can only be broadcast once for a (sourceDomain, destinationDomain)\n pair. The message body of a valid message is passed to the\n specified recipient for further processing.\n @dev Attestation format:\n A valid attestation is the concatenated 65-byte signature(s) of exactly\n `thresholdSignature` signatures, in increasing order of attester address.\n ***If the attester addresses recovered from signatures are not in\n increasing order, signature verification will fail.***\n If incorrect number of signatures or duplicate signatures are supplied,\n signature verification will fail.\n Message format:\n Field Bytes Type Index\n version 4 uint32 0\n sourceDomain 4 uint32 4\n destinationDomain 4 uint32 8\n nonce 8 uint64 12\n sender 32 bytes32 20\n recipient 32 bytes32 52\n messageBody dynamic bytes 84\n @param _message Message bytes\n @param _attestation Concatenated 65-byte signature(s) of `_message`, in increasing order\n of the attester address recovered from signatures.\n @return success bool, true if successful"
+                },
+                "functionSelector": "57ecfd28",
+                "id": 11,
+                "implemented": false,
+                "kind": "function",
+                "modifiers": [],
+                "name": "receiveMessage",
+                "nameLocation": "1351:14:0",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 7,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 4,
+                      "mutability": "mutable",
+                      "name": "_message",
+                      "nameLocation": "1388:8:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 11,
+                      "src": "1375:21:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_memory_ptr",
+                        "typeString": "bytes"
+                      },
+                      "typeName": {
+                        "id": 3,
+                        "name": "bytes",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1375:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_storage_ptr",
+                          "typeString": "bytes"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 6,
+                      "mutability": "mutable",
+                      "name": "_attestation",
+                      "nameLocation": "1421:12:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 11,
+                      "src": "1406:27:0",
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_calldata_ptr",
+                        "typeString": "bytes"
+                      },
+                      "typeName": {
+                        "id": 5,
+                        "name": "bytes",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1406:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_storage_ptr",
+                          "typeString": "bytes"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "1365:74:0"
+                },
+                "returnParameters": {
+                  "id": 10,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 9,
+                      "mutability": "mutable",
+                      "name": "success",
+                      "nameLocation": "1463:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 11,
+                      "src": "1458:12:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "typeName": {
+                        "id": 8,
+                        "name": "bool",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1458:4:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "1457:14:0"
+                },
+                "scope": 19,
+                "src": "1342:130:0",
+                "stateMutability": "nonpayable",
+                "virtual": false,
+                "visibility": "external"
+              },
+              {
+                "functionSelector": "feb61724",
+                "id": 18,
+                "implemented": false,
+                "kind": "function",
+                "modifiers": [],
+                "name": "usedNonces",
+                "nameLocation": "1487:10:0",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 14,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 13,
+                      "mutability": "mutable",
+                      "name": "_nonceId",
+                      "nameLocation": "1506:8:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 18,
+                      "src": "1498:16:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 12,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1498:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "1497:18:0"
+                },
+                "returnParameters": {
+                  "id": 17,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 16,
+                      "mutability": "mutable",
+                      "name": "",
+                      "nameLocation": "-1:-1:-1",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 18,
+                      "src": "1539:4:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "typeName": {
+                        "id": 15,
+                        "name": "bool",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1539:4:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "1538:6:0"
+                },
+                "scope": 19,
+                "src": "1478:67:0",
+                "stateMutability": "view",
+                "virtual": false,
+                "visibility": "external"
+              }
+            ],
+            "scope": 20,
+            "src": "65:1482:0",
+            "usedErrors": []
+          }
+        ],
+        "src": "39:1509:0"
+      }
+    }
+  },
+  "errors": [],
+  "version": "0.8.19",
+  "long_version": "0.8.19+commit.7dd6d404.Darwin.appleclang",
+  "zk_version": "1.4.1"
+}

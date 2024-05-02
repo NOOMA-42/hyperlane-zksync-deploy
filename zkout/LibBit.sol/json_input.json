@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/libs/LibBit.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.8.0;\n\n/// @notice Library for bit shifting and masking\nlibrary LibBit {\n    function setBit(\n        uint256 _value,\n        uint256 _index\n    ) internal pure returns (uint256) {\n        return _value | (1 << _index);\n    }\n\n    function clearBit(\n        uint256 _value,\n        uint256 _index\n    ) internal pure returns (uint256) {\n        return _value & ~(1 << _index);\n    }\n\n    function isBitSet(\n        uint256 _value,\n        uint256 _index\n    ) internal pure returns (bool) {\n        return (_value >> _index) & 1 == 1;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

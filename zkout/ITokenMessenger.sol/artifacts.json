@@ -1,0 +1,574 @@
+{
+  "contracts": {
+    "contracts/middleware/liquidity-layer/interfaces/circle/ITokenMessenger.sol": {
+      "ITokenMessenger": {
+        "abi": [
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": false,
+                "internalType": "bytes",
+                "name": "message",
+                "type": "bytes"
+              }
+            ],
+            "name": "MessageSent",
+            "type": "event"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint32",
+                "name": "_destinationDomain",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "_mintRecipient",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "_burnToken",
+                "type": "address"
+              }
+            ],
+            "name": "depositForBurn",
+            "outputs": [
+              {
+                "internalType": "uint64",
+                "name": "_nonce",
+                "type": "uint64"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint32",
+                "name": "_destinationDomain",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "_mintRecipient",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "_burnToken",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "_destinationCaller",
+                "type": "bytes32"
+              }
+            ],
+            "name": "depositForBurnWithCaller",
+            "outputs": [
+              {
+                "internalType": "uint64",
+                "name": "_nonce",
+                "type": "uint64"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          }
+        ],
+        "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"message\",\"type\":\"bytes\"}],\"name\":\"MessageSent\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\"},{\"internalType\":\"bytes32\",\"name\":\"_mintRecipient\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"_burnToken\",\"type\":\"address\"}],\"name\":\"depositForBurn\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"_nonce\",\"type\":\"uint64\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\"},{\"internalType\":\"bytes32\",\"name\":\"_mintRecipient\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"_burnToken\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"_destinationCaller\",\"type\":\"bytes32\"}],\"name\":\"depositForBurnWithCaller\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"_nonce\",\"type\":\"uint64\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"depositForBurn(uint256,uint32,bytes32,address)\":{\"details\":\"reverts if: - given burnToken is not supported - given destinationDomain has no TokenMessenger registered - transferFrom() reverts. For example, if sender's burnToken balance or approved allowance to this contract is less than `amount`. - burn() reverts. For example, if `amount` is 0. - MessageTransmitter returns false or reverts.\",\"params\":{\"_amount\":\"amount of tokens to burn\",\"_burnToken\":\"address of contract to burn deposited tokens, on local domain\",\"_destinationDomain\":\"destination domain (ETH = 0, AVAX = 1)\",\"_mintRecipient\":\"address of mint recipient on destination domain\"},\"returns\":{\"_nonce\":\"unique nonce reserved by message\"}},\"depositForBurnWithCaller(uint256,uint32,bytes32,address,bytes32)\":{\"details\":\"reverts if: - given destinationCaller is zero address - given burnToken is not supported - given destinationDomain has no TokenMessenger registered - transferFrom() reverts. For example, if sender's burnToken balance or approved allowance to this contract is less than `amount`. - burn() reverts. For example, if `amount` is 0. - MessageTransmitter returns false or reverts.\",\"params\":{\"_amount\":\"amount of tokens to burn\",\"_burnToken\":\"address of contract to burn deposited tokens, on local domain\",\"_destinationCaller\":\"caller on the destination domain, as bytes32\",\"_destinationDomain\":\"destination domain\",\"_mintRecipient\":\"address of mint recipient on destination domain\"},\"returns\":{\"_nonce\":\"unique nonce reserved by message\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"depositForBurn(uint256,uint32,bytes32,address)\":{\"notice\":\"Deposits and burns tokens from sender to be minted on destination domain. Emits a `DepositForBurn` event.\"},\"depositForBurnWithCaller(uint256,uint32,bytes32,address,bytes32)\":{\"notice\":\"Deposits and burns tokens from sender to be minted on destination domain. The mint on the destination domain must be called by `_destinationCaller`. WARNING: if the `_destinationCaller` does not represent a valid address as bytes32, then it will not be possible to broadcast the message on the destination domain. This is an advanced feature, and the standard depositForBurn() should be preferred for use cases where a specific destination caller is not required. Emits a `DepositForBurn` event.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/middleware/liquidity-layer/interfaces/circle/ITokenMessenger.sol\":\"ITokenMessenger\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":false,\"cse\":false,\"deduplicate\":false,\"inliner\":false,\"jumpdestRemover\":false,\"orderLiterals\":false,\"peephole\":false,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf[xa[r]EscLMcCTUtTOntnfDIulLculVcul [j]Tpeulxa[rul]xa[r]cLgvifCTUca[r]LSsTFOtfDnca[r]Iulc]jmul[jul] VcTOcul jmul:fDnTOc\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"contracts/middleware/liquidity-layer/interfaces/circle/ITokenMessenger.sol\":{\"keccak256\":\"0x11af0cfb34575338712af04d0edf5f9d17beb9476b7174477debaeb924529fcc\",\"license\":\"Apache-2.0\",\"urls\":[\"bzz-raw://37aa8a08b8ba58370cc4859c1a91fc3bb8eede7f03bade078648ffbaf595765d\",\"dweb:/ipfs/QmbA4UzwidJL9spNNJPyr8ZkdsGSwhBpmiXsWf74ThdEhN\"]}},\"version\":1}",
+        "evm": {
+          "legacyAssembly": null,
+          "assembly": null,
+          "bytecode": null,
+          "methodIdentifiers": {
+            "depositForBurn(uint256,uint32,bytes32,address)": "6fd3504e",
+            "depositForBurnWithCaller(uint256,uint32,bytes32,address,bytes32)": "f856ddb6"
+          }
+        },
+        "irOptimized": ""
+      }
+    }
+  },
+  "sources": {
+    "contracts/middleware/liquidity-layer/interfaces/circle/ITokenMessenger.sol": {
+      "id": 0,
+      "ast": {
+        "absolutePath": "contracts/middleware/liquidity-layer/interfaces/circle/ITokenMessenger.sol",
+        "exportedSymbols": {
+          "ITokenMessenger": [
+            36
+          ]
+        },
+        "id": 37,
+        "license": "Apache-2.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+          {
+            "id": 1,
+            "literals": [
+              "solidity",
+              "^",
+              "0.8",
+              ".13"
+            ],
+            "nodeType": "PragmaDirective",
+            "src": "39:24:0"
+          },
+          {
+            "abstract": false,
+            "baseContracts": [],
+            "canonicalName": "ITokenMessenger",
+            "contractDependencies": [],
+            "contractKind": "interface",
+            "fullyImplemented": false,
+            "id": 36,
+            "linearizedBaseContracts": [
+              36
+            ],
+            "name": "ITokenMessenger",
+            "nameLocation": "75:15:0",
+            "nodeType": "ContractDefinition",
+            "nodes": [
+              {
+                "anonymous": false,
+                "eventSelector": "8c5261668696ce22758910d05bab8f186d6eb247ceac2af2e82c7dc17669b036",
+                "id": 5,
+                "name": "MessageSent",
+                "nameLocation": "103:11:0",
+                "nodeType": "EventDefinition",
+                "parameters": {
+                  "id": 4,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 3,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "message",
+                      "nameLocation": "121:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 5,
+                      "src": "115:13:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_memory_ptr",
+                        "typeString": "bytes"
+                      },
+                      "typeName": {
+                        "id": 2,
+                        "name": "bytes",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "115:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_storage_ptr",
+                          "typeString": "bytes"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "114:15:0"
+                },
+                "src": "97:33:0"
+              },
+              {
+                "documentation": {
+                  "id": 6,
+                  "nodeType": "StructuredDocumentation",
+                  "src": "136:864:0",
+                  "text": " @notice Deposits and burns tokens from sender to be minted on destination domain.\n Emits a `DepositForBurn` event.\n @dev reverts if:\n - given burnToken is not supported\n - given destinationDomain has no TokenMessenger registered\n - transferFrom() reverts. For example, if sender's burnToken balance or approved allowance\n to this contract is less than `amount`.\n - burn() reverts. For example, if `amount` is 0.\n - MessageTransmitter returns false or reverts.\n @param _amount amount of tokens to burn\n @param _destinationDomain destination domain (ETH = 0, AVAX = 1)\n @param _mintRecipient address of mint recipient on destination domain\n @param _burnToken address of contract to burn deposited tokens, on local domain\n @return _nonce unique nonce reserved by message"
+                },
+                "functionSelector": "6fd3504e",
+                "id": 19,
+                "implemented": false,
+                "kind": "function",
+                "modifiers": [],
+                "name": "depositForBurn",
+                "nameLocation": "1014:14:0",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 15,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 8,
+                      "mutability": "mutable",
+                      "name": "_amount",
+                      "nameLocation": "1046:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 19,
+                      "src": "1038:15:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 7,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1038:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 10,
+                      "mutability": "mutable",
+                      "name": "_destinationDomain",
+                      "nameLocation": "1070:18:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 19,
+                      "src": "1063:25:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      },
+                      "typeName": {
+                        "id": 9,
+                        "name": "uint32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1063:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 12,
+                      "mutability": "mutable",
+                      "name": "_mintRecipient",
+                      "nameLocation": "1106:14:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 19,
+                      "src": "1098:22:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 11,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1098:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 14,
+                      "mutability": "mutable",
+                      "name": "_burnToken",
+                      "nameLocation": "1138:10:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 19,
+                      "src": "1130:18:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 13,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1130:7:0",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "1028:126:0"
+                },
+                "returnParameters": {
+                  "id": 18,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 17,
+                      "mutability": "mutable",
+                      "name": "_nonce",
+                      "nameLocation": "1180:6:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 19,
+                      "src": "1173:13:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint64",
+                        "typeString": "uint64"
+                      },
+                      "typeName": {
+                        "id": 16,
+                        "name": "uint64",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1173:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint64",
+                          "typeString": "uint64"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "1172:15:0"
+                },
+                "scope": 36,
+                "src": "1005:183:0",
+                "stateMutability": "nonpayable",
+                "virtual": false,
+                "visibility": "external"
+              },
+              {
+                "documentation": {
+                  "id": 20,
+                  "nodeType": "StructuredDocumentation",
+                  "src": "1194:1389:0",
+                  "text": " @notice Deposits and burns tokens from sender to be minted on destination domain. The mint\n on the destination domain must be called by `_destinationCaller`.\n WARNING: if the `_destinationCaller` does not represent a valid address as bytes32, then it will not be possible\n to broadcast the message on the destination domain. This is an advanced feature, and the standard\n depositForBurn() should be preferred for use cases where a specific destination caller is not required.\n Emits a `DepositForBurn` event.\n @dev reverts if:\n - given destinationCaller is zero address\n - given burnToken is not supported\n - given destinationDomain has no TokenMessenger registered\n - transferFrom() reverts. For example, if sender's burnToken balance or approved allowance\n to this contract is less than `amount`.\n - burn() reverts. For example, if `amount` is 0.\n - MessageTransmitter returns false or reverts.\n @param _amount amount of tokens to burn\n @param _destinationDomain destination domain\n @param _mintRecipient address of mint recipient on destination domain\n @param _burnToken address of contract to burn deposited tokens, on local domain\n @param _destinationCaller caller on the destination domain, as bytes32\n @return _nonce unique nonce reserved by message"
+                },
+                "functionSelector": "f856ddb6",
+                "id": 35,
+                "implemented": false,
+                "kind": "function",
+                "modifiers": [],
+                "name": "depositForBurnWithCaller",
+                "nameLocation": "2597:24:0",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 31,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 22,
+                      "mutability": "mutable",
+                      "name": "_amount",
+                      "nameLocation": "2639:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 35,
+                      "src": "2631:15:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 21,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2631:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 24,
+                      "mutability": "mutable",
+                      "name": "_destinationDomain",
+                      "nameLocation": "2663:18:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 35,
+                      "src": "2656:25:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      },
+                      "typeName": {
+                        "id": 23,
+                        "name": "uint32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2656:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 26,
+                      "mutability": "mutable",
+                      "name": "_mintRecipient",
+                      "nameLocation": "2699:14:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 35,
+                      "src": "2691:22:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 25,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2691:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 28,
+                      "mutability": "mutable",
+                      "name": "_burnToken",
+                      "nameLocation": "2731:10:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 35,
+                      "src": "2723:18:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 27,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2723:7:0",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 30,
+                      "mutability": "mutable",
+                      "name": "_destinationCaller",
+                      "nameLocation": "2759:18:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 35,
+                      "src": "2751:26:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 29,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2751:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "2621:162:0"
+                },
+                "returnParameters": {
+                  "id": 34,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 33,
+                      "mutability": "mutable",
+                      "name": "_nonce",
+                      "nameLocation": "2809:6:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 35,
+                      "src": "2802:13:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint64",
+                        "typeString": "uint64"
+                      },
+                      "typeName": {
+                        "id": 32,
+                        "name": "uint64",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2802:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint64",
+                          "typeString": "uint64"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "2801:15:0"
+                },
+                "scope": 36,
+                "src": "2588:229:0",
+                "stateMutability": "nonpayable",
+                "virtual": false,
+                "visibility": "external"
+              }
+            ],
+            "scope": 37,
+            "src": "65:2754:0",
+            "usedErrors": []
+          }
+        ],
+        "src": "39:2781:0"
+      }
+    }
+  },
+  "errors": [],
+  "version": "0.8.19",
+  "long_version": "0.8.19+commit.7dd6d404.Darwin.appleclang",
+  "zk_version": "1.4.1"
+}

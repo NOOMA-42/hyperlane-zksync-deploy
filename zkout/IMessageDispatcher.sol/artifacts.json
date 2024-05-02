@@ -1,0 +1,448 @@
+{
+  "contracts": {
+    "contracts/interfaces/hooks/IMessageDispatcher.sol": {
+      "IMessageDispatcher": {
+        "abi": [
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "messageId",
+                "type": "bytes32"
+              },
+              {
+                "indexed": true,
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+              },
+              {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "toChainId",
+                "type": "uint256"
+              },
+              {
+                "indexed": false,
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+              },
+              {
+                "indexed": false,
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+              }
+            ],
+            "name": "MessageDispatched",
+            "type": "event"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "toChainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+              }
+            ],
+            "name": "dispatchMessage",
+            "outputs": [
+              {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          }
+        ],
+        "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"messageId\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"toChainId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"MessageDispatched\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"toChainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"dispatchMessage\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"See https://eips.ethereum.org/EIPS/eip-5164\",\"events\":{\"MessageDispatched(bytes32,address,uint256,address,bytes)\":{\"params\":{\"data\":\"Data that was dispatched\",\"from\":\"Address that dispatched the message\",\"messageId\":\"ID uniquely identifying the message\",\"to\":\"Address that will receive the message\",\"toChainId\":\"ID of the chain receiving the message\"}}},\"kind\":\"dev\",\"methods\":{},\"title\":\"ERC-5164: Cross-Chain Execution Standard\",\"version\":1},\"userdoc\":{\"events\":{\"MessageDispatched(bytes32,address,uint256,address,bytes)\":{\"notice\":\"Emitted when a message has successfully been dispatched to the executor chain.\"}},\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/hooks/IMessageDispatcher.sol\":\"IMessageDispatcher\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":false,\"cse\":false,\"deduplicate\":false,\"inliner\":false,\"jumpdestRemover\":false,\"orderLiterals\":false,\"peephole\":false,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf[xa[r]EscLMcCTUtTOntnfDIulLculVcul [j]Tpeulxa[rul]xa[r]cLgvifCTUca[r]LSsTFOtfDnca[r]Iulc]jmul[jul] VcTOcul jmul:fDnTOc\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/hooks/IMessageDispatcher.sol\":{\"keccak256\":\"0x1b57a26d096aee87ae4da26de9f290ad47189eccc018880a8491f2c065f981bf\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://d1d29182a36d2019030d83ca4172da64885b620d62a132b97cd3f0277a0f7ecf\",\"dweb:/ipfs/QmWh7Xz5C3Y6goBVbzkxrx1bQCnuyq9f7RQKLt6FhetuTa\"]}},\"version\":1}",
+        "evm": {
+          "legacyAssembly": null,
+          "assembly": null,
+          "bytecode": null,
+          "methodIdentifiers": {
+            "dispatchMessage(uint256,address,bytes)": "fe39827b"
+          }
+        },
+        "irOptimized": ""
+      }
+    }
+  },
+  "sources": {
+    "contracts/interfaces/hooks/IMessageDispatcher.sol": {
+      "id": 0,
+      "ast": {
+        "absolutePath": "contracts/interfaces/hooks/IMessageDispatcher.sol",
+        "exportedSymbols": {
+          "IMessageDispatcher": [
+            27
+          ]
+        },
+        "id": 28,
+        "license": "MIT OR Apache-2.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+          {
+            "id": 1,
+            "literals": [
+              "solidity",
+              ">=",
+              "0.8",
+              ".0"
+            ],
+            "nodeType": "PragmaDirective",
+            "src": "46:24:0"
+          },
+          {
+            "abstract": false,
+            "baseContracts": [],
+            "canonicalName": "IMessageDispatcher",
+            "contractDependencies": [],
+            "contractKind": "interface",
+            "documentation": {
+              "id": 2,
+              "nodeType": "StructuredDocumentation",
+              "src": "72:110:0",
+              "text": " @title ERC-5164: Cross-Chain Execution Standard\n @dev See https://eips.ethereum.org/EIPS/eip-5164"
+            },
+            "fullyImplemented": false,
+            "id": 27,
+            "linearizedBaseContracts": [
+              27
+            ],
+            "name": "IMessageDispatcher",
+            "nameLocation": "193:18:0",
+            "nodeType": "ContractDefinition",
+            "nodes": [
+              {
+                "anonymous": false,
+                "documentation": {
+                  "id": 3,
+                  "nodeType": "StructuredDocumentation",
+                  "src": "218:381:0",
+                  "text": " @notice Emitted when a message has successfully been dispatched to the executor chain.\n @param messageId ID uniquely identifying the message\n @param from Address that dispatched the message\n @param toChainId ID of the chain receiving the message\n @param to Address that will receive the message\n @param data Data that was dispatched"
+                },
+                "eventSelector": "e2f8f20ddbedfce5eb59a8b930077e7f4906a01300b9318db5f90d1c96c7b6d4",
+                "id": 15,
+                "name": "MessageDispatched",
+                "nameLocation": "610:17:0",
+                "nodeType": "EventDefinition",
+                "parameters": {
+                  "id": 14,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 5,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "messageId",
+                      "nameLocation": "653:9:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 15,
+                      "src": "637:25:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 4,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "637:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 7,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "from",
+                      "nameLocation": "688:4:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 15,
+                      "src": "672:20:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 6,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "672:7:0",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 9,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "toChainId",
+                      "nameLocation": "718:9:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 15,
+                      "src": "702:25:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 8,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "702:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 11,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "to",
+                      "nameLocation": "745:2:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 15,
+                      "src": "737:10:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 10,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "737:7:0",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 13,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "data",
+                      "nameLocation": "763:4:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 15,
+                      "src": "757:10:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_memory_ptr",
+                        "typeString": "bytes"
+                      },
+                      "typeName": {
+                        "id": 12,
+                        "name": "bytes",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "757:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_storage_ptr",
+                          "typeString": "bytes"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "627:146:0"
+                },
+                "src": "604:170:0"
+              },
+              {
+                "functionSelector": "fe39827b",
+                "id": 26,
+                "implemented": false,
+                "kind": "function",
+                "modifiers": [],
+                "name": "dispatchMessage",
+                "nameLocation": "789:15:0",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 22,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 17,
+                      "mutability": "mutable",
+                      "name": "toChainId",
+                      "nameLocation": "822:9:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 26,
+                      "src": "814:17:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 16,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "814:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 19,
+                      "mutability": "mutable",
+                      "name": "to",
+                      "nameLocation": "849:2:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 26,
+                      "src": "841:10:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 18,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "841:7:0",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 21,
+                      "mutability": "mutable",
+                      "name": "data",
+                      "nameLocation": "876:4:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 26,
+                      "src": "861:19:0",
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_calldata_ptr",
+                        "typeString": "bytes"
+                      },
+                      "typeName": {
+                        "id": 20,
+                        "name": "bytes",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "861:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_storage_ptr",
+                          "typeString": "bytes"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "804:82:0"
+                },
+                "returnParameters": {
+                  "id": 25,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 24,
+                      "mutability": "mutable",
+                      "name": "",
+                      "nameLocation": "-1:-1:-1",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 26,
+                      "src": "905:7:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 23,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "905:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "904:9:0"
+                },
+                "scope": 27,
+                "src": "780:134:0",
+                "stateMutability": "nonpayable",
+                "virtual": false,
+                "visibility": "external"
+              }
+            ],
+            "scope": 28,
+            "src": "183:733:0",
+            "usedErrors": []
+          }
+        ],
+        "src": "46:871:0"
+      }
+    }
+  },
+  "errors": [],
+  "version": "0.8.19",
+  "long_version": "0.8.19+commit.7dd6d404.Darwin.appleclang",
+  "zk_version": "1.4.1"
+}

@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/middleware/liquidity-layer/interfaces/circle/ITokenMessenger.sol": {
+      "content": "// SPDX-License-Identifier: Apache-2.0\npragma solidity ^0.8.13;\n\ninterface ITokenMessenger {\n    event MessageSent(bytes message);\n\n    /**\n     * @notice Deposits and burns tokens from sender to be minted on destination domain.\n     * Emits a `DepositForBurn` event.\n     * @dev reverts if:\n     * - given burnToken is not supported\n     * - given destinationDomain has no TokenMessenger registered\n     * - transferFrom() reverts. For example, if sender's burnToken balance or approved allowance\n     * to this contract is less than `amount`.\n     * - burn() reverts. For example, if `amount` is 0.\n     * - MessageTransmitter returns false or reverts.\n     * @param _amount amount of tokens to burn\n     * @param _destinationDomain destination domain (ETH = 0, AVAX = 1)\n     * @param _mintRecipient address of mint recipient on destination domain\n     * @param _burnToken address of contract to burn deposited tokens, on local domain\n     * @return _nonce unique nonce reserved by message\n     */\n    function depositForBurn(\n        uint256 _amount,\n        uint32 _destinationDomain,\n        bytes32 _mintRecipient,\n        address _burnToken\n    ) external returns (uint64 _nonce);\n\n    /**\n     * @notice Deposits and burns tokens from sender to be minted on destination domain. The mint\n     * on the destination domain must be called by `_destinationCaller`.\n     * WARNING: if the `_destinationCaller` does not represent a valid address as bytes32, then it will not be possible\n     * to broadcast the message on the destination domain. This is an advanced feature, and the standard\n     * depositForBurn() should be preferred for use cases where a specific destination caller is not required.\n     * Emits a `DepositForBurn` event.\n     * @dev reverts if:\n     * - given destinationCaller is zero address\n     * - given burnToken is not supported\n     * - given destinationDomain has no TokenMessenger registered\n     * - transferFrom() reverts. For example, if sender's burnToken balance or approved allowance\n     * to this contract is less than `amount`.\n     * - burn() reverts. For example, if `amount` is 0.\n     * - MessageTransmitter returns false or reverts.\n     * @param _amount amount of tokens to burn\n     * @param _destinationDomain destination domain\n     * @param _mintRecipient address of mint recipient on destination domain\n     * @param _burnToken address of contract to burn deposited tokens, on local domain\n     * @param _destinationCaller caller on the destination domain, as bytes32\n     * @return _nonce unique nonce reserved by message\n     */\n    function depositForBurnWithCaller(\n        uint256 _amount,\n        uint32 _destinationDomain,\n        bytes32 _mintRecipient,\n        address _burnToken,\n        bytes32 _destinationCaller\n    ) external returns (uint64 _nonce);\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

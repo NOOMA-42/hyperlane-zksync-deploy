@@ -1,0 +1,230 @@
+{
+  "contracts": {
+    "contracts/libs/Indexed.sol": {
+      "Indexed": {
+        "abi": [
+          {
+            "inputs": [],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+          },
+          {
+            "inputs": [],
+            "name": "deployedBlock",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          }
+        ],
+        "metadata": {
+          "optimizer_settings": {
+            "is_debug_logging_enabled": false,
+            "is_fallback_to_size_enabled": false,
+            "is_system_request_memoization_disabled": true,
+            "is_verify_each_enabled": false,
+            "jump_table_density_threshold": null,
+            "level_back_end": "Aggressive",
+            "level_middle_end": "Aggressive",
+            "level_middle_end_size": "Zero"
+          },
+          "solc_metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"deployedBlock\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/libs/Indexed.sol\":\"Indexed\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":false,\"cse\":false,\"deduplicate\":false,\"inliner\":false,\"jumpdestRemover\":false,\"orderLiterals\":false,\"peephole\":false,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf[xa[r]EscLMcCTUtTOntnfDIulLculVcul [j]Tpeulxa[rul]xa[r]cLgvifCTUca[r]LSsTFOtfDnca[r]Iulc]jmul[jul] VcTOcul jmul:fDnTOc\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"contracts/libs/Indexed.sol\":{\"keccak256\":\"0xd26c31976c35890709b1736fea29598ef9df51929066b79ceca42e155ce9867c\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://ff131e5531af4b599b92592b74dd9d4da01fb3e7a9ee0d420ea3d4fabf826f7f\",\"dweb:/ipfs/QmR4Q2jeKchTvjze3kYpdWd8rV5csTGoqkw2EHwR5iDYC3\"]}},\"version\":1}",
+          "solc_version": "0.8.19",
+          "solc_zkvm_edition": null,
+          "zk_version": "1.4.1"
+        },
+        "evm": {
+          "legacyAssembly": null,
+          "assembly": "\t.text\n\t.file\t\"Indexed.sol:Indexed\"\n\t.globl\t__entry\n__entry:\n.func_begin0:\n\tnop\tstack+=[3]\n\tand!\t1, r2, r2\n\tjump.ne\t@.BB0_1\n\tadd\t128, r0, r2\n\tst.1\t64, r2\n\tadd\tr1, r0, r2\n\tand!\t@CPI0_2[0], r2, r2\n\tjump.eq\t@.BB0_2\n\tld\tr1, r1\n\tand\t@CPI0_3[0], r1, r1\n\tsub.s!\t@CPI0_4[0], r1, r1\n\tjump.ne\t@.BB0_2\n\tcontext.get_context_u128\tr1\n\tsub!\tr1, r0, r1\n\tjump.ne\t@.BB0_2\n\tcontext.code_source\tr1\n\tadd\tr1, r0, stack-[2]\n\tadd\t0, r0, stack-[1]\n\tadd\t32773, r0, r1\n\tadd\t68, r0, r3\n\tcontext.sp\tr4\n\tsub.s\t2, r4, r4\n\tshl.s\t5, r4, r4\n\tadd\t@CPI0_5[0], r0, r2\n\tnear_call\tr0, @__system_request, @DEFAULT_UNWIND\n\tst.1\t128, r1\n\tadd\t@CPI0_6[0], r0, r1\n\tret.ok.to_label\tr1, @DEFAULT_FAR_RETURN\n.BB0_1:\n\tadd\t160, r0, r1\n\tst.1\t64, r1\n\tcontext.get_context_u128\tr1\n\tsub!\tr1, r0, r1\n\tjump.ne\t@.BB0_2\n\tadd\t32779, r0, r1\n\tadd\t4, r0, r3\n\tcontext.sp\tr4\n\tsub.s\t3, r4, r4\n\tshl.s\t5, r4, r4\n\tadd\t@CPI0_0[0], r0, r2\n\tnear_call\tr0, @__system_request, @DEFAULT_UNWIND\n\tst.1\t128, r1\n\tst.2\t320, r0\n\tst.2\t352, r1\n\tadd\t32, r0, r1\n\tst.2\t256, r1\n\tadd\t1, r0, r1\n\tst.2\t288, r1\n\tadd\t@CPI0_1[0], r0, r1\n\tret.ok.to_label\tr1, @DEFAULT_FAR_RETURN\n.BB0_2:\n\tadd\tr0, r0, r1\n\tret.revert.to_label\tr1, @DEFAULT_FAR_REVERT\n.func_end0:\n\n__cxa_throw:\n.func_begin1:\n\trevert\n.func_end1:\n\n__system_request:\n.func_begin2:\n\tadd\tr1, r0, r5\n\tst.2\t0, r2\n\tsub.s!\t5, r3, r1\n\tjump.lt\t@.BB2_4\n\tadd\t4, r0, r1\n\tadd\tr0, r0, r2\n.BB2_3:\n\tshl.s\t5, r2, r6\n\tadd\tr4, r6, r6\n\tshr.s\t5, r6, r6\n\tadd\tstack[r6], r0, r6\n\tst.2.inc\tr1, r6, r1\n\tadd\t1, r2, r2\n\tsub!\tr1, r3, r6\n\tjump.lt\t@.BB2_3\n.BB2_4:\n\tadd\t@CPI2_0[0], r0, r1\n\tcontext.gas_left\tr2\n\tsub.s!\t@CPI2_0[0], r2, r4\n\tadd.ge\tr1, r0, r2\n\tsub.s!\t@CPI2_0[0], r3, r4\n\tadd.ge\tr1, r0, r3\n\tshl.s\t96, r3, r1\n\tshl.s\t192, r2, r2\n\tor\tr2, r1, r1\n\tor\t@CPI2_1[0], r1, r1\n\tadd\tr5, r0, r2\n\tnear_call\tr0, @__staticcall, @DEFAULT_UNWIND\n\tand!\t1, r2, r2\n\tjump.eq\t@.BB2_5\n\tld\tr1, r1\n\tret\n.BB2_5:\n\trevert\n.func_end2:\n\n__staticcall:\n.func_begin3:\n.tmp0:\n\tfar_call.static\tr1, r2, @.BB3_2\n.tmp1:\n\tadd\t1, r0, r2\n\tret\n.BB3_2:\n.tmp2:\n\tadd\tr0, r0, r2\n\tret\n.func_end3:\n\n\t.note.GNU-stack\n\t.rodata\nCPI0_0:\n\t.cell 30212542071733633044144396051920796812958444182406851663962835650539531164625\nCPI0_1:\n\t.cell 53919893334301279589334030174039261357415493651629346657050491355136\nCPI0_2:\n\t.cell 340282366604025813406317257057592410112\nCPI0_3:\n\t.cell -26959946667150639794667015087019630673637144422540572481103610249216\nCPI0_4:\n\t.cell -56577120945706314306307990248396844536710846755512809994118378586995739852800\nCPI0_5:\n\t.cell 22182216476136578060272566318850604970565072242024486780356928325126096266030\nCPI0_6:\n\t.cell 2535301202817642044428229017600\nCPI2_0:\n\t.cell 4294967295\nCPI2_1:\n\t.cell 904625751086426111047927909714404454142933102474605751639407337269041823744\n",
+          "bytecode": {
+            "object": "000300000000000200000001022001900000001c0000c13d0000008002000039000000400020043f00000000020100190000001902200198000000310000613d000000000101043b0000001a011001970000001b0110009c000000310000c13d0000000001000416000000000101004b000000310000c13d0000000001000412000200000001001d000100000000001d000080050100003900000044030000390000000004000415000000020440008a00000005044002100000001c02000041005800340000040f000000800010043f0000001d01000041000000590001042e000000a001000039000000400010043f0000000001000416000000000101004b000000310000c13d0000800b0100003900000004030000390000000004000415000000030440008a00000005044002100000001702000041005800340000040f000000800010043f0000014000000443000001600010044300000020010000390000010000100443000000010100003900000120001004430000001801000041000000590001042e00000000010000190000005a00010430000000000001042f00000000050100190000000000200439000000050130008c000000420000413d000000040100003900000000020000190000000506200210000000000664001900000005066002700000000006060031000000000161043a0000000102200039000000000631004b0000003a0000413d0000001e0100004100000000020004140000001e0420009c00000000020180190000001e0430009c00000000030180190000006001300210000000c002200210000000000112019f0000001f011001c70000000002050019005800530000040f0000000102200190000000520000613d000000000101043b000000000001042d000000000001042f00000056002104230000000102000039000000000001042d0000000002000019000000000001042d0000005800000432000000590001042e0000005a00010430000000000000000042cbb15ccdc3cad6266b0e7a08c0454b23bf29dc2df74b6f3c209e9336465bd1000000020000000000000000000000000000008000000100000000000000000000000000000000000000000000000000fffffffc000000000000000000000000ffffffff0000000000000000000000000000000000000000000000000000000082ea7bfe00000000000000000000000000000000000000000000000000000000310ab089e4439a4c15d089f94afb7896ff553aecb10793d0ab882de59d99a32e000000000000000000000000000000000000002000000080000000000000000000000000000000000000000000000000000000000000000000000000ffffffff020000020000000000000000000000000000000000000000000000000000000095f372a832d8a53938f5dd31121c6c1f7b7e97dae49f90211bb0068b816eb227"
+          },
+          "methodIdentifiers": {
+            "deployedBlock()": "82ea7bfe"
+          }
+        },
+        "irOptimized": "/// @use-src 0:\"contracts/libs/Indexed.sol\"\nobject \"Indexed_13\" {\n    code {\n        {\n            /// @src 0:72:201  \"contract Indexed {...\"\n            let _1 := memoryguard(0xa0)\n            mstore(64, _1)\n            if callvalue() { revert(0, 0) }\n            /// @src 0:164:192  \"deployedBlock = block.number\"\n            mstore(128, /** @src 0:180:192  \"block.number\" */ number())\n            /// @src 0:72:201  \"contract Indexed {...\"\n            let _2 := datasize(\"Indexed_13_deployed\")\n            codecopy(_1, dataoffset(\"Indexed_13_deployed\"), _2)\n            setimmutable(_1, \"3\", mload(/** @src 0:164:192  \"deployedBlock = block.number\" */ 128))\n            /// @src 0:72:201  \"contract Indexed {...\"\n            return(_1, _2)\n        }\n    }\n    /// @use-src 0:\"contracts/libs/Indexed.sol\"\n    object \"Indexed_13_deployed\" {\n        code {\n            {\n                /// @src 0:72:201  \"contract Indexed {...\"\n                let _1 := memoryguard(0x80)\n                mstore(64, _1)\n                if iszero(lt(calldatasize(), 4))\n                {\n                    let _2 := 0\n                    if eq(0x82ea7bfe, shr(224, calldataload(_2)))\n                    {\n                        if callvalue() { revert(_2, _2) }\n                        if slt(add(calldatasize(), not(3)), _2) { revert(_2, _2) }\n                        mstore(_1, /** @src 0:95:133  \"uint256 public immutable deployedBlock\" */ loadimmutable(\"3\"))\n                        /// @src 0:72:201  \"contract Indexed {...\"\n                        return(_1, 32)\n                    }\n                }\n                revert(0, 0)\n            }\n        }\n        data \".metadata\" hex\"a264697066735822122094db627eab64ec80a8532de4f6e566b286921379a3ac2ff52f4851ba50325e4464736f6c63430008130033\"\n    }\n}\n",
+        "hash": "010000216aaff03a1cf9462bb89f5e993aa0d315b8854e38f26289c4cb38f8b8",
+        "factoryDependencies": {}
+      }
+    }
+  },
+  "sources": {
+    "contracts/libs/Indexed.sol": {
+      "id": 0,
+      "ast": {
+        "absolutePath": "contracts/libs/Indexed.sol",
+        "exportedSymbols": {
+          "Indexed": [
+            13
+          ]
+        },
+        "id": 14,
+        "license": "MIT OR Apache-2.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+          {
+            "id": 1,
+            "literals": [
+              "solidity",
+              ">=",
+              "0.8",
+              ".0"
+            ],
+            "nodeType": "PragmaDirective",
+            "src": "46:24:0"
+          },
+          {
+            "abstract": false,
+            "baseContracts": [],
+            "canonicalName": "Indexed",
+            "contractDependencies": [],
+            "contractKind": "contract",
+            "fullyImplemented": true,
+            "id": 13,
+            "linearizedBaseContracts": [
+              13
+            ],
+            "name": "Indexed",
+            "nameLocation": "81:7:0",
+            "nodeType": "ContractDefinition",
+            "nodes": [
+              {
+                "constant": false,
+                "functionSelector": "82ea7bfe",
+                "id": 3,
+                "mutability": "immutable",
+                "name": "deployedBlock",
+                "nameLocation": "120:13:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 13,
+                "src": "95:38:0",
+                "stateVariable": true,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "95:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "public"
+              },
+              {
+                "body": {
+                  "id": 11,
+                  "nodeType": "Block",
+                  "src": "154:45:0",
+                  "statements": [
+                    {
+                      "expression": {
+                        "id": 9,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftHandSide": {
+                          "id": 6,
+                          "name": "deployedBlock",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3,
+                          "src": "164:13:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "Assignment",
+                        "operator": "=",
+                        "rightHandSide": {
+                          "expression": {
+                            "id": 7,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": -4,
+                            "src": "180:5:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 8,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "186:6:0",
+                          "memberName": "number",
+                          "nodeType": "MemberAccess",
+                          "src": "180:12:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "164:28:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "id": 10,
+                      "nodeType": "ExpressionStatement",
+                      "src": "164:28:0"
+                    }
+                  ]
+                },
+                "id": 12,
+                "implemented": true,
+                "kind": "constructor",
+                "modifiers": [],
+                "name": "",
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 4,
+                  "nodeType": "ParameterList",
+                  "parameters": [],
+                  "src": "151:2:0"
+                },
+                "returnParameters": {
+                  "id": 5,
+                  "nodeType": "ParameterList",
+                  "parameters": [],
+                  "src": "154:0:0"
+                },
+                "scope": 13,
+                "src": "140:59:0",
+                "stateMutability": "nonpayable",
+                "virtual": false,
+                "visibility": "public"
+              }
+            ],
+            "scope": 14,
+            "src": "72:129:0",
+            "usedErrors": []
+          }
+        ],
+        "src": "46:156:0"
+      }
+    }
+  },
+  "errors": [],
+  "version": "0.8.19",
+  "long_version": "0.8.19+commit.7dd6d404.Darwin.appleclang",
+  "zk_version": "1.4.1"
+}

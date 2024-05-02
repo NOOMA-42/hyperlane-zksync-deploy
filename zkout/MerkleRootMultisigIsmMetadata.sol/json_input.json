@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/isms/libs/MerkleRootMultisigIsmMetadata.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.8.0;\n\n/**\n * Format of metadata:\n * [   0:  32] Origin merkle tree address\n * [  32:  36] Index of message ID in merkle tree\n * [  36:  68] Signed checkpoint message ID\n * [  68:1092] Merkle proof\n * [1092:1096] Signed checkpoint index (computed from proof and index)\n * [1096:????] Validator signatures (length := threshold * 65)\n */\nlibrary MerkleRootMultisigIsmMetadata {\n    uint8 private constant ORIGIN_MERKLE_TREE_OFFSET = 0;\n    uint8 private constant MESSAGE_INDEX_OFFSET = 32;\n    uint8 private constant MESSAGE_ID_OFFSET = 36;\n    uint8 private constant MERKLE_PROOF_OFFSET = 68;\n    uint16 private constant MERKLE_PROOF_LENGTH = 32 * 32;\n    uint16 private constant SIGNED_INDEX_OFFSET = 1092;\n    uint16 private constant SIGNATURES_OFFSET = 1096;\n    uint8 private constant SIGNATURE_LENGTH = 65;\n\n    /**\n     * @notice Returns the origin merkle tree hook of the signed checkpoint as bytes32.\n     * @param _metadata ABI encoded Multisig ISM metadata.\n     * @return Origin merkle tree hook of the signed checkpoint as bytes32\n     */\n    function originMerkleTreeHook(\n        bytes calldata _metadata\n    ) internal pure returns (bytes32) {\n        return\n            bytes32(\n                _metadata[ORIGIN_MERKLE_TREE_OFFSET:ORIGIN_MERKLE_TREE_OFFSET +\n                    32]\n            );\n    }\n\n    /**\n     * @notice Returns the index of the message being proven.\n     * @param _metadata ABI encoded Multisig ISM metadata.\n     * @return Index of the target message in the merkle tree.\n     */\n    function messageIndex(\n        bytes calldata _metadata\n    ) internal pure returns (uint32) {\n        return\n            uint32(\n                bytes4(_metadata[MESSAGE_INDEX_OFFSET:MESSAGE_INDEX_OFFSET + 4])\n            );\n    }\n\n    /**\n     * @notice Returns the index of the signed checkpoint.\n     * @param _metadata ABI encoded Multisig ISM metadata.\n     * @return Index of the signed checkpoint\n     */\n    function signedIndex(\n        bytes calldata _metadata\n    ) internal pure returns (uint32) {\n        return\n            uint32(\n                bytes4(_metadata[SIGNED_INDEX_OFFSET:SIGNED_INDEX_OFFSET + 4])\n            );\n    }\n\n    /**\n     * @notice Returns the message ID of the signed checkpoint.\n     * @param _metadata ABI encoded Multisig ISM metadata.\n     * @return Message ID of the signed checkpoint\n     */\n    function signedMessageId(\n        bytes calldata _metadata\n    ) internal pure returns (bytes32) {\n        return bytes32(_metadata[MESSAGE_ID_OFFSET:MESSAGE_ID_OFFSET + 32]);\n    }\n\n    /**\n     * @notice Returns the merkle proof branch of the message.\n     * @dev This appears to be more gas efficient than returning a calldata\n     * slice and using that.\n     * @param _metadata ABI encoded Multisig ISM metadata.\n     * @return Merkle proof branch of the message.\n     */\n    function proof(\n        bytes calldata _metadata\n    ) internal pure returns (bytes32[32] memory) {\n        return\n            abi.decode(\n                _metadata[MERKLE_PROOF_OFFSET:MERKLE_PROOF_OFFSET +\n                    MERKLE_PROOF_LENGTH],\n                (bytes32[32])\n            );\n    }\n\n    /**\n     * @notice Returns the validator ECDSA signature at `_index`.\n     * @dev Assumes signatures are sorted by validator\n     * @dev Assumes `_metadata` encodes `threshold` signatures.\n     * @dev Assumes `_index` is less than `threshold`\n     * @param _metadata ABI encoded Multisig ISM metadata.\n     * @param _index The index of the signature to return.\n     * @return The validator ECDSA signature at `_index`.\n     */\n    function signatureAt(\n        bytes calldata _metadata,\n        uint256 _index\n    ) internal pure returns (bytes calldata) {\n        uint256 _start = SIGNATURES_OFFSET + (_index * SIGNATURE_LENGTH);\n        uint256 _end = _start + SIGNATURE_LENGTH;\n        return _metadata[_start:_end];\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

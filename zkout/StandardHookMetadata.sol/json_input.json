@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/hooks/libs/StandardHookMetadata.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.8.0;\n\n/*@@@@@@@       @@@@@@@@@\n @@@@@@@@@       @@@@@@@@@\n  @@@@@@@@@       @@@@@@@@@\n   @@@@@@@@@       @@@@@@@@@\n    @@@@@@@@@@@@@@@@@@@@@@@@@\n     @@@@@  HYPERLANE  @@@@@@@\n    @@@@@@@@@@@@@@@@@@@@@@@@@\n   @@@@@@@@@       @@@@@@@@@\n  @@@@@@@@@       @@@@@@@@@\n @@@@@@@@@       @@@@@@@@@\n@@@@@@@@@       @@@@@@@@*/\n\n/**\n * Format of metadata:\n *\n * [0:2] variant\n * [2:34] msg.value\n * [34:66] Gas limit for message (IGP)\n * [66:86] Refund address for message (IGP)\n * [86:] Custom metadata\n */\nlibrary StandardHookMetadata {\n    struct Metadata {\n        uint16 variant;\n        uint256 msgValue;\n        uint256 gasLimit;\n        address refundAddress;\n    }\n\n    uint8 private constant VARIANT_OFFSET = 0;\n    uint8 private constant MSG_VALUE_OFFSET = 2;\n    uint8 private constant GAS_LIMIT_OFFSET = 34;\n    uint8 private constant REFUND_ADDRESS_OFFSET = 66;\n    uint256 private constant MIN_METADATA_LENGTH = 86;\n\n    uint16 public constant VARIANT = 1;\n\n    /**\n     * @notice Returns the variant of the metadata.\n     * @param _metadata ABI encoded standard hook metadata.\n     * @return variant of the metadata as uint8.\n     */\n    function variant(bytes calldata _metadata) internal pure returns (uint16) {\n        if (_metadata.length < VARIANT_OFFSET + 2) return 0;\n        return uint16(bytes2(_metadata[VARIANT_OFFSET:VARIANT_OFFSET + 2]));\n    }\n\n    /**\n     * @notice Returns the specified value for the message.\n     * @param _metadata ABI encoded standard hook metadata.\n     * @param _default Default fallback value.\n     * @return Value for the message as uint256.\n     */\n    function msgValue(\n        bytes calldata _metadata,\n        uint256 _default\n    ) internal pure returns (uint256) {\n        if (_metadata.length < MSG_VALUE_OFFSET + 32) return _default;\n        return\n            uint256(bytes32(_metadata[MSG_VALUE_OFFSET:MSG_VALUE_OFFSET + 32]));\n    }\n\n    /**\n     * @notice Returns the specified gas limit for the message.\n     * @param _metadata ABI encoded standard hook metadata.\n     * @param _default Default fallback gas limit.\n     * @return Gas limit for the message as uint256.\n     */\n    function gasLimit(\n        bytes calldata _metadata,\n        uint256 _default\n    ) internal pure returns (uint256) {\n        if (_metadata.length < GAS_LIMIT_OFFSET + 32) return _default;\n        return\n            uint256(bytes32(_metadata[GAS_LIMIT_OFFSET:GAS_LIMIT_OFFSET + 32]));\n    }\n\n    /**\n     * @notice Returns the specified refund address for the message.\n     * @param _metadata ABI encoded standard hook metadata.\n     * @param _default Default fallback refund address.\n     * @return Refund address for the message as address.\n     */\n    function refundAddress(\n        bytes calldata _metadata,\n        address _default\n    ) internal pure returns (address) {\n        if (_metadata.length < REFUND_ADDRESS_OFFSET + 20) return _default;\n        return\n            address(\n                bytes20(\n                    _metadata[REFUND_ADDRESS_OFFSET:REFUND_ADDRESS_OFFSET + 20]\n                )\n            );\n    }\n\n    /**\n     * @notice Returns any custom metadata.\n     * @param _metadata ABI encoded standard hook metadata.\n     * @return Custom metadata.\n     */\n    function getCustomMetadata(\n        bytes calldata _metadata\n    ) internal pure returns (bytes calldata) {\n        if (_metadata.length < MIN_METADATA_LENGTH) return _metadata[0:0];\n        return _metadata[MIN_METADATA_LENGTH:];\n    }\n\n    /**\n     * @notice Formats the specified gas limit and refund address into standard hook metadata.\n     * @param _msgValue msg.value for the message.\n     * @param _gasLimit Gas limit for the message.\n     * @param _refundAddress Refund address for the message.\n     * @param _customMetadata Additional metadata to include in the standard hook metadata.\n     * @return ABI encoded standard hook metadata.\n     */\n    function formatMetadata(\n        uint256 _msgValue,\n        uint256 _gasLimit,\n        address _refundAddress,\n        bytes memory _customMetadata\n    ) internal pure returns (bytes memory) {\n        return\n            abi.encodePacked(\n                VARIANT,\n                _msgValue,\n                _gasLimit,\n                _refundAddress,\n                _customMetadata\n            );\n    }\n\n    /**\n     * @notice Formats the specified gas limit and refund address into standard hook metadata.\n     * @param _msgValue msg.value for the message.\n     * @return ABI encoded standard hook metadata.\n     */\n    function overrideMsgValue(\n        uint256 _msgValue\n    ) internal view returns (bytes memory) {\n        return formatMetadata(_msgValue, uint256(0), msg.sender, \"\");\n    }\n\n    /**\n     * @notice Formats the specified gas limit and refund address into standard hook metadata.\n     * @param _gasLimit Gas limit for the message.\n     * @return ABI encoded standard hook metadata.\n     */\n    function overrideGasLimit(\n        uint256 _gasLimit\n    ) internal view returns (bytes memory) {\n        return formatMetadata(uint256(0), _gasLimit, msg.sender, \"\");\n    }\n\n    /**\n     * @notice Formats the specified refund address into standard hook metadata.\n     * @param _refundAddress Refund address for the message.\n     * @return ABI encoded standard hook metadata.\n     */\n    function overrideRefundAddress(\n        address _refundAddress\n    ) internal pure returns (bytes memory) {\n        return formatMetadata(uint256(0), uint256(0), _refundAddress, \"\");\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

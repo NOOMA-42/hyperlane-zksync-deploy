@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/interfaces/hooks/IPostDispatchHook.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.8.0;\n\n/*@@@@@@@       @@@@@@@@@\n @@@@@@@@@       @@@@@@@@@\n  @@@@@@@@@       @@@@@@@@@\n   @@@@@@@@@       @@@@@@@@@\n    @@@@@@@@@@@@@@@@@@@@@@@@@\n     @@@@@  HYPERLANE  @@@@@@@\n    @@@@@@@@@@@@@@@@@@@@@@@@@\n   @@@@@@@@@       @@@@@@@@@\n  @@@@@@@@@       @@@@@@@@@\n @@@@@@@@@       @@@@@@@@@\n@@@@@@@@@       @@@@@@@@*/\n\ninterface IPostDispatchHook {\n    enum Types {\n        UNUSED,\n        ROUTING,\n        AGGREGATION,\n        MERKLE_TREE,\n        INTERCHAIN_GAS_PAYMASTER,\n        FALLBACK_ROUTING,\n        ID_AUTH_ISM,\n        PAUSABLE,\n        PROTOCOL_FEE\n    }\n\n    /**\n     * @notice Returns an enum that represents the type of hook\n     */\n    function hookType() external view returns (uint8);\n\n    /**\n     * @notice Returns whether the hook supports metadata\n     * @param metadata metadata\n     * @return Whether the hook supports metadata\n     */\n    function supportsMetadata(\n        bytes calldata metadata\n    ) external view returns (bool);\n\n    /**\n     * @notice Post action after a message is dispatched via the Mailbox\n     * @param metadata The metadata required for the hook\n     * @param message The message passed from the Mailbox.dispatch() call\n     */\n    function postDispatch(\n        bytes calldata metadata,\n        bytes calldata message\n    ) external payable;\n\n    /**\n     * @notice Compute the payment required by the postDispatch call\n     * @param metadata The metadata required for the hook\n     * @param message The message passed from the Mailbox.dispatch() call\n     * @return Quoted payment for the postDispatch call\n     */\n    function quoteDispatch(\n        bytes calldata metadata,\n        bytes calldata message\n    ) external view returns (uint256);\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/interfaces/IInterchainGasPaymaster.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.6.11;\n\n/**\n * @title IInterchainGasPaymaster\n * @notice Manages payments on a source chain to cover gas costs of relaying\n * messages to destination chains.\n */\ninterface IInterchainGasPaymaster {\n    /**\n     * @notice Emitted when a payment is made for a message's gas costs.\n     * @param messageId The ID of the message to pay for.\n     * @param destinationDomain The domain of the destination chain.\n     * @param gasAmount The amount of destination gas paid for.\n     * @param payment The amount of native tokens paid.\n     */\n    event GasPayment(\n        bytes32 indexed messageId,\n        uint32 indexed destinationDomain,\n        uint256 gasAmount,\n        uint256 payment\n    );\n\n    function payForGas(\n        bytes32 _messageId,\n        uint32 _destinationDomain,\n        uint256 _gasAmount,\n        address _refundAddress\n    ) external payable;\n\n    function quoteGasPayment(\n        uint32 _destinationDomain,\n        uint256 _gasAmount\n    ) external view returns (uint256);\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

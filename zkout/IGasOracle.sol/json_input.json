@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/interfaces/IGasOracle.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.8.0;\n\ninterface IGasOracle {\n    struct RemoteGasData {\n        // The exchange rate of the remote native token quoted in the local native token.\n        // Scaled with 10 decimals, i.e. 1e10 is \"one\".\n        uint128 tokenExchangeRate;\n        uint128 gasPrice;\n    }\n\n    function getExchangeRateAndGasPrice(\n        uint32 _destinationDomain\n    ) external view returns (uint128 tokenExchangeRate, uint128 gasPrice);\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

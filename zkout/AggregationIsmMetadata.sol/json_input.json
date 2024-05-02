@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/isms/libs/AggregationIsmMetadata.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.8.0;\n\n/**\n * Format of metadata:\n *\n * [????:????] Metadata start/end uint32 ranges, packed as uint64\n * [????:????] ISM metadata, packed encoding\n */\nlibrary AggregationIsmMetadata {\n    uint256 private constant RANGE_SIZE = 4;\n\n    /**\n     * @notice Returns whether or not metadata was provided for the ISM at\n     * `_index`\n     * @dev Callers must ensure _index is less than the number of metadatas\n     * provided\n     * @param _metadata Encoded Aggregation ISM metadata\n     * @param _index The index of the ISM to check for metadata for\n     * @return Whether or not metadata was provided for the ISM at `_index`\n     */\n    function hasMetadata(\n        bytes calldata _metadata,\n        uint8 _index\n    ) internal pure returns (bool) {\n        (uint32 _start, ) = _metadataRange(_metadata, _index);\n        return _start > 0;\n    }\n\n    /**\n     * @notice Returns the metadata provided for the ISM at `_index`\n     * @dev Callers must ensure _index is less than the number of metadatas\n     * provided\n     * @dev Callers must ensure `hasMetadata(_metadata, _index)`\n     * @param _metadata Encoded Aggregation ISM metadata\n     * @param _index The index of the ISM to return metadata for\n     * @return The metadata provided for the ISM at `_index`\n     */\n    function metadataAt(\n        bytes calldata _metadata,\n        uint8 _index\n    ) internal pure returns (bytes calldata) {\n        (uint32 _start, uint32 _end) = _metadataRange(_metadata, _index);\n        return _metadata[_start:_end];\n    }\n\n    /**\n     * @notice Returns the range of the metadata provided for the ISM at\n     * `_index`, or zeroes if not provided\n     * @dev Callers must ensure _index is less than the number of metadatas\n     * provided\n     * @param _metadata Encoded Aggregation ISM metadata\n     * @param _index The index of the ISM to return metadata range for\n     * @return The range of the metadata provided for the ISM at `_index`, or\n     * zeroes if not provided\n     */\n    function _metadataRange(\n        bytes calldata _metadata,\n        uint8 _index\n    ) private pure returns (uint32, uint32) {\n        uint256 _start = (uint32(_index) * RANGE_SIZE * 2);\n        uint256 _mid = _start + RANGE_SIZE;\n        uint256 _end = _mid + RANGE_SIZE;\n        return (\n            uint32(bytes4(_metadata[_start:_mid])),\n            uint32(bytes4(_metadata[_mid:_end]))\n        );\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

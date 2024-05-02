@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/middleware/liquidity-layer/interfaces/ILiquidityLayerAdapter.sol": {
+      "content": "// SPDX-License-Identifier: Apache-2.0\npragma solidity ^0.8.13;\n\ninterface ILiquidityLayerAdapter {\n    function sendTokens(\n        uint32 _destinationDomain,\n        bytes32 _recipientAddress,\n        address _token,\n        uint256 _amount\n    ) external returns (bytes memory _adapterData);\n\n    function receiveTokens(\n        uint32 _originDomain, // Hyperlane domain\n        address _recipientAddress,\n        uint256 _amount,\n        bytes calldata _adapterData // The adapter data from the message\n    ) external returns (address, uint256);\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

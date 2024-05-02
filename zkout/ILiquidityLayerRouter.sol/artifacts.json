@@ -1,0 +1,337 @@
+{
+  "contracts": {
+    "contracts/interfaces/ILiquidityLayerRouter.sol": {
+      "ILiquidityLayerRouter": {
+        "abi": [
+          {
+            "inputs": [
+              {
+                "internalType": "uint32",
+                "name": "_destinationDomain",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "_recipientAddress",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "_token",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "_bridge",
+                "type": "string"
+              },
+              {
+                "internalType": "bytes",
+                "name": "_messageBody",
+                "type": "bytes"
+              }
+            ],
+            "name": "dispatchWithTokens",
+            "outputs": [
+              {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          }
+        ],
+        "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\"},{\"internalType\":\"bytes32\",\"name\":\"_recipientAddress\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_bridge\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"_messageBody\",\"type\":\"bytes\"}],\"name\":\"dispatchWithTokens\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ILiquidityLayerRouter.sol\":\"ILiquidityLayerRouter\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":false,\"cse\":false,\"deduplicate\":false,\"inliner\":false,\"jumpdestRemover\":false,\"orderLiterals\":false,\"peephole\":false,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf[xa[r]EscLMcCTUtTOntnfDIulLculVcul [j]Tpeulxa[rul]xa[r]cLgvifCTUca[r]LSsTFOtfDnca[r]Iulc]jmul[jul] VcTOcul jmul:fDnTOc\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"contracts/interfaces/ILiquidityLayerRouter.sol\":{\"keccak256\":\"0x693dcc152bfbe03cae2a1013c061c7fe387401573d0021760dc52d68a4fbe74a\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://d113c660079014457cb55757c26357266fa6cf771d21c82ee12d2f8621fa0098\",\"dweb:/ipfs/QmZEreKddHASCuZVWKdUxLJGWyy1XPbN8bWqdhdjKfVi1W\"]}},\"version\":1}",
+        "evm": {
+          "legacyAssembly": null,
+          "assembly": null,
+          "bytecode": null,
+          "methodIdentifiers": {
+            "dispatchWithTokens(uint32,bytes32,address,uint256,string,bytes)": "9540473b"
+          }
+        },
+        "irOptimized": ""
+      }
+    }
+  },
+  "sources": {
+    "contracts/interfaces/ILiquidityLayerRouter.sol": {
+      "id": 0,
+      "ast": {
+        "absolutePath": "contracts/interfaces/ILiquidityLayerRouter.sol",
+        "exportedSymbols": {
+          "ILiquidityLayerRouter": [
+            19
+          ]
+        },
+        "id": 20,
+        "license": "MIT OR Apache-2.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+          {
+            "id": 1,
+            "literals": [
+              "solidity",
+              ">=",
+              "0.6",
+              ".11"
+            ],
+            "nodeType": "PragmaDirective",
+            "src": "46:25:0"
+          },
+          {
+            "abstract": false,
+            "baseContracts": [],
+            "canonicalName": "ILiquidityLayerRouter",
+            "contractDependencies": [],
+            "contractKind": "interface",
+            "fullyImplemented": false,
+            "id": 19,
+            "linearizedBaseContracts": [
+              19
+            ],
+            "name": "ILiquidityLayerRouter",
+            "nameLocation": "83:21:0",
+            "nodeType": "ContractDefinition",
+            "nodes": [
+              {
+                "functionSelector": "9540473b",
+                "id": 18,
+                "implemented": false,
+                "kind": "function",
+                "modifiers": [],
+                "name": "dispatchWithTokens",
+                "nameLocation": "120:18:0",
+                "nodeType": "FunctionDefinition",
+                "parameters": {
+                  "id": 14,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 3,
+                      "mutability": "mutable",
+                      "name": "_destinationDomain",
+                      "nameLocation": "155:18:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 18,
+                      "src": "148:25:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      },
+                      "typeName": {
+                        "id": 2,
+                        "name": "uint32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "148:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 5,
+                      "mutability": "mutable",
+                      "name": "_recipientAddress",
+                      "nameLocation": "191:17:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 18,
+                      "src": "183:25:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 4,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "183:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 7,
+                      "mutability": "mutable",
+                      "name": "_token",
+                      "nameLocation": "226:6:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 18,
+                      "src": "218:14:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 6,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "218:7:0",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 9,
+                      "mutability": "mutable",
+                      "name": "_amount",
+                      "nameLocation": "250:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 18,
+                      "src": "242:15:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 8,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "242:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 11,
+                      "mutability": "mutable",
+                      "name": "_bridge",
+                      "nameLocation": "283:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 18,
+                      "src": "267:23:0",
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_calldata_ptr",
+                        "typeString": "string"
+                      },
+                      "typeName": {
+                        "id": 10,
+                        "name": "string",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "267:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_storage_ptr",
+                          "typeString": "string"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 13,
+                      "mutability": "mutable",
+                      "name": "_messageBody",
+                      "nameLocation": "315:12:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 18,
+                      "src": "300:27:0",
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_calldata_ptr",
+                        "typeString": "bytes"
+                      },
+                      "typeName": {
+                        "id": 12,
+                        "name": "bytes",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "300:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_storage_ptr",
+                          "typeString": "bytes"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "138:195:0"
+                },
+                "returnParameters": {
+                  "id": 17,
+                  "nodeType": "ParameterList",
+                  "parameters": [
+                    {
+                      "constant": false,
+                      "id": 16,
+                      "mutability": "mutable",
+                      "name": "",
+                      "nameLocation": "-1:-1:-1",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 18,
+                      "src": "352:7:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 15,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "352:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "src": "351:9:0"
+                },
+                "scope": 19,
+                "src": "111:250:0",
+                "stateMutability": "nonpayable",
+                "virtual": false,
+                "visibility": "external"
+              }
+            ],
+            "scope": 20,
+            "src": "73:290:0",
+            "usedErrors": []
+          }
+        ],
+        "src": "46:318:0"
+      }
+    }
+  },
+  "errors": [],
+  "version": "0.8.19",
+  "long_version": "0.8.19+commit.7dd6d404.Darwin.appleclang",
+  "zk_version": "1.4.1"
+}

@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/interfaces/IValidatorAnnounce.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.6.11;\n\ninterface IValidatorAnnounce {\n    /// @notice Returns a list of validators that have made announcements\n    function getAnnouncedValidators() external view returns (address[] memory);\n\n    /**\n     * @notice Returns a list of all announced storage locations for `validators`\n     * @param _validators The list of validators to get storage locations for\n     * @return A list of announced storage locations\n     */\n    function getAnnouncedStorageLocations(\n        address[] calldata _validators\n    ) external view returns (string[][] memory);\n\n    /**\n     * @notice Announces a validator signature storage location\n     * @param _storageLocation Information encoding the location of signed\n     * checkpoints\n     * @param _signature The signed validator announcement\n     * @return True upon success\n     */\n    function announce(\n        address _validator,\n        string calldata _storageLocation,\n        bytes calldata _signature\n    ) external returns (bool);\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}

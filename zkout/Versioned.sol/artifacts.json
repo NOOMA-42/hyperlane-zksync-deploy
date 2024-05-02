@@ -1,0 +1,156 @@
+{
+  "contracts": {
+    "contracts/upgrade/Versioned.sol": {
+      "Versioned": {
+        "abi": [
+          {
+            "inputs": [],
+            "name": "VERSION",
+            "outputs": [
+              {
+                "internalType": "uint8",
+                "name": "",
+                "type": "uint8"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          }
+        ],
+        "metadata": {
+          "optimizer_settings": {
+            "is_debug_logging_enabled": false,
+            "is_fallback_to_size_enabled": false,
+            "is_system_request_memoization_disabled": true,
+            "is_verify_each_enabled": false,
+            "jump_table_density_threshold": null,
+            "level_back_end": "Aggressive",
+            "level_middle_end": "Aggressive",
+            "level_middle_end_size": "Zero"
+          },
+          "solc_metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"VERSION\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Versioned\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Version getter for contracts*\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/upgrade/Versioned.sol\":\"Versioned\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":false,\"cse\":false,\"deduplicate\":false,\"inliner\":false,\"jumpdestRemover\":false,\"orderLiterals\":false,\"peephole\":false,\"yul\":true,\"yulDetails\":{\"optimizerSteps\":\"dhfoDgvulfnTUtnIf[xa[r]EscLMcCTUtTOntnfDIulLculVcul [j]Tpeulxa[rul]xa[r]cLgvifCTUca[r]LSsTFOtfDnca[r]Iulc]jmul[jul] VcTOcul jmul:fDnTOc\",\"stackAllocation\":true}},\"runs\":200},\"remappings\":[\":@openzeppelin/=node_modules/@openzeppelin/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"contracts/upgrade/Versioned.sol\":{\"keccak256\":\"0xdef5b9227ee177fe0f50871897b43d8acd1be2d730e6c0e77719f7fd53dc7729\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://caf8bdbb25773c75f4fcfd8939c03ec776e44353ccf046639e1f57c5b9aa9df9\",\"dweb:/ipfs/QmbNDKaKpiPXGrnCZt3GYUCuxMQh5mzXHB7msCUkpC3cP9\"]}},\"version\":1}",
+          "solc_version": "0.8.19",
+          "solc_zkvm_edition": null,
+          "zk_version": "1.4.1"
+        },
+        "evm": {
+          "legacyAssembly": null,
+          "assembly": "\t.text\n\t.file\t\"Versioned.sol:Versioned\"\n\t.globl\t__entry\n__entry:\n.func_begin0:\n\tadd\t128, r0, r3\n\tst.1\t64, r3\n\tand!\t1, r2, r2\n\tjump.ne\t@.BB0_1\n\tadd\tr1, r0, r2\n\tand!\t@CPI0_1[0], r2, r2\n\tjump.eq\t@.BB0_2\n\tld\tr1, r1\n\tand\t@CPI0_2[0], r1, r1\n\tsub.s!\t@CPI0_3[0], r1, r1\n\tjump.ne\t@.BB0_2\n\tcontext.get_context_u128\tr1\n\tsub!\tr1, r0, r1\n\tjump.ne\t@.BB0_2\n\tadd\t3, r0, r1\n\tst.1\t128, r1\n\tadd\t@CPI0_4[0], r0, r1\n\tret.ok.to_label\tr1, @DEFAULT_FAR_RETURN\n.BB0_1:\n\tcontext.get_context_u128\tr1\n\tsub!\tr1, r0, r1\n\tjump.ne\t@.BB0_2\n\tadd\t32, r0, r1\n\tst.2\t256, r1\n\tst.2\t288, r0\n\tadd\t@CPI0_0[0], r0, r1\n\tret.ok.to_label\tr1, @DEFAULT_FAR_RETURN\n.BB0_2:\n\tadd\tr0, r0, r1\n\tret.revert.to_label\tr1, @DEFAULT_FAR_REVERT\n.func_end0:\n\n\t.note.GNU-stack\n\t.rodata\nCPI0_0:\n\t.cell 53919893334301279589334030174039261352344891250716429051063678533632\nCPI0_1:\n\t.cell 340282366604025813406317257057592410112\nCPI0_2:\n\t.cell -26959946667150639794667015087019630673637144422540572481103610249216\nCPI0_3:\n\t.cell -166653341682138354300970868432653239323178786442245309441101664413292691456\nCPI0_4:\n\t.cell 2535301202817642044428229017600\n",
+          "bytecode": {
+            "object": "0000008003000039000000400030043f0000000102200190000000120000c13d000000000201001900000009022001980000001a0000613d000000000101043b0000000a011001970000000b0110009c0000001a0000c13d0000000001000416000000000101004b0000001a0000c13d0000000301000039000000800010043f0000000c010000410000001d0001042e0000000001000416000000000101004b0000001a0000c13d00000020010000390000010000100443000001200000044300000008010000410000001d0001042e00000000010000190000001e000104300000001c000004320000001d0001042e0000001e000104300000000000000000000000020000000000000000000000000000004000000100000000000000000000000000000000000000000000000000fffffffc000000000000000000000000ffffffff00000000000000000000000000000000000000000000000000000000ffa1ad7400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000080000000000000000000000000000000000000000000000000000000000000000000000000000000006cbf828cb9ffd38bfa0f9e6772363c663884857e732a81e8d4878d459d93c3c9"
+          },
+          "methodIdentifiers": {
+            "VERSION()": "ffa1ad74"
+          }
+        },
+        "irOptimized": "/// @use-src 0:\"contracts/upgrade/Versioned.sol\"\nobject \"Versioned_6\" {\n    code {\n        {\n            /// @src 0:142:203  \"contract Versioned {...\"\n            let _1 := memoryguard(0x80)\n            mstore(64, _1)\n            if callvalue() { revert(0, 0) }\n            let _2 := datasize(\"Versioned_6_deployed\")\n            codecopy(_1, dataoffset(\"Versioned_6_deployed\"), _2)\n            return(_1, _2)\n        }\n    }\n    /// @use-src 0:\"contracts/upgrade/Versioned.sol\"\n    object \"Versioned_6_deployed\" {\n        code {\n            {\n                /// @src 0:142:203  \"contract Versioned {...\"\n                let _1 := memoryguard(0x80)\n                mstore(64, _1)\n                if iszero(lt(calldatasize(), 4))\n                {\n                    let _2 := 0\n                    if eq(0xffa1ad74, shr(224, calldataload(_2)))\n                    {\n                        if callvalue() { revert(_2, _2) }\n                        if slt(add(calldatasize(), not(3)), _2) { revert(_2, _2) }\n                        mstore(_1, /** @src 0:199:200  \"3\" */ 0x03)\n                        /// @src 0:142:203  \"contract Versioned {...\"\n                        return(_1, 32)\n                    }\n                }\n                revert(0, 0)\n            }\n        }\n        data \".metadata\" hex\"a2646970667358221220f79e7a631b2171b69a606c8742b7ac43251d729799155a6a8660357f70f6606b64736f6c63430008130033\"\n    }\n}\n",
+        "hash": "0100000f351f9694709dc5392769e5e4a8352ea0b00bf26ab452cff59d931e2f",
+        "factoryDependencies": {}
+      }
+    }
+  },
+  "sources": {
+    "contracts/upgrade/Versioned.sol": {
+      "id": 0,
+      "ast": {
+        "absolutePath": "contracts/upgrade/Versioned.sol",
+        "exportedSymbols": {
+          "Versioned": [
+            6
+          ]
+        },
+        "id": 7,
+        "license": "MIT OR Apache-2.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+          {
+            "id": 1,
+            "literals": [
+              "solidity",
+              ">=",
+              "0.6",
+              ".11"
+            ],
+            "nodeType": "PragmaDirective",
+            "src": "46:25:0"
+          },
+          {
+            "abstract": false,
+            "baseContracts": [],
+            "canonicalName": "Versioned",
+            "contractDependencies": [],
+            "contractKind": "contract",
+            "documentation": {
+              "id": 2,
+              "nodeType": "StructuredDocumentation",
+              "src": "73:68:0",
+              "text": " @title Versioned\n @notice Version getter for contracts*"
+            },
+            "fullyImplemented": true,
+            "id": 6,
+            "linearizedBaseContracts": [
+              6
+            ],
+            "name": "Versioned",
+            "nameLocation": "151:9:0",
+            "nodeType": "ContractDefinition",
+            "nodes": [
+              {
+                "constant": true,
+                "functionSelector": "ffa1ad74",
+                "id": 5,
+                "mutability": "constant",
+                "name": "VERSION",
+                "nameLocation": "189:7:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 6,
+                "src": "167:33:0",
+                "stateVariable": true,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 3,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "167:5:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": {
+                  "hexValue": "33",
+                  "id": 4,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "kind": "number",
+                  "lValueRequested": false,
+                  "nodeType": "Literal",
+                  "src": "199:1:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_rational_3_by_1",
+                    "typeString": "int_const 3"
+                  },
+                  "value": "3"
+                },
+                "visibility": "public"
+              }
+            ],
+            "scope": 7,
+            "src": "142:61:0",
+            "usedErrors": []
+          }
+        ],
+        "src": "46:158:0"
+      }
+    }
+  },
+  "errors": [],
+  "version": "0.8.19",
+  "long_version": "0.8.19+commit.7dd6d404.Darwin.appleclang",
+  "zk_version": "1.4.1"
+}

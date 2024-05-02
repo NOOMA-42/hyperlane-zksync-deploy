@@ -1,6 +1,13 @@
 [profile.default]
-src = "src"
+src = "contracts"
 out = "out"
-libs = ["lib"]
+libs = ["lib", "node_modules"]
+test = 'test'
+
+[profile.zksync]
+src = 'contracts'
+libs = ["lib", "node_modules"]
+fallback_oz = true
+mode = "3"
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

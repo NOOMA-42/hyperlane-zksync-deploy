@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/token/libs/TokenMessage.sol": {
+      "content": "// SPDX-License-Identifier: MIT OR Apache-2.0\npragma solidity >=0.8.0;\n\nlibrary TokenMessage {\n    function format(\n        bytes32 _recipient,\n        uint256 _amount,\n        bytes memory _metadata\n    ) internal pure returns (bytes memory) {\n        return abi.encodePacked(_recipient, _amount, _metadata);\n    }\n\n    function recipient(bytes calldata message) internal pure returns (bytes32) {\n        return bytes32(message[0:32]);\n    }\n\n    function amount(bytes calldata message) internal pure returns (uint256) {\n        return uint256(bytes32(message[32:64]));\n    }\n\n    // alias for ERC721\n    function tokenId(bytes calldata message) internal pure returns (uint256) {\n        return amount(message);\n    }\n\n    function metadata(\n        bytes calldata message\n    ) internal pure returns (bytes calldata) {\n        return message[64:];\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/=node_modules/@openzeppelin/",
+      "forge-std/=lib/forge-std/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "mode": "3",
+      "details": null,
+      "fallbackToOptimizingForSize": false,
+      "disableSystemRequestMemoization": true
+    },
+    "outputSelection": {
+      "*": {
+        "": [
+          "metadata"
+        ],
+        "*": [
+          "abi",
+          "evm.methodIdentifiers"
+        ]
+      }
+    },
+    "libraries": {},
+    "isSystem": false,
+    "forceEvmla": false,
+    "areLibrariesMissing": false
+  }
+}
